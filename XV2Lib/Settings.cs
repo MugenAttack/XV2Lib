@@ -12,33 +12,37 @@ namespace XV2Lib
         public string MSGFolder;
         public string SysFolder;
 
-        public void Read()
+        public bool Read()
         {
-            StreamReader sr = new StreamReader(File.Open("Settings.csv", FileMode.Open));
-            
-            string line;
-            string[] sep;
-            while (!sr.EndOfStream)
+            if (File.Exists("Settings.csv"))
             {
-                line = sr.ReadLine();
-                sep = line.Split(",".ToCharArray());
-                switch (sep[0])
+                StreamReader sr = new StreamReader(File.Open("Settings.csv", FileMode.Open));
+
+                string line;
+                string[] sep;
+                while (!sr.EndOfStream)
                 {
-                    case "LANG":
-                        language = sep[1];
-                        break;
-                    case "MSG":
-                        MSGFolder = sep[1];
-                        break;
-                    case "SYS":
-                        SysFolder = sep[1];
-                        break;
+                    line = sr.ReadLine();
+                    sep = line.Split(",".ToCharArray());
+                    switch (sep[0])
+                    {
+                        case "LANG":
+                            language = sep[1];
+                            break;
+                        case "MSG":
+                            MSGFolder = sep[1];
+                            break;
+                        case "SYS":
+                            SysFolder = sep[1];
+                            break;
+                    }
+
+
                 }
-
-
+                return true;
             }
-            
-            
+            else
+                return false;
         }
 
         public void Write()

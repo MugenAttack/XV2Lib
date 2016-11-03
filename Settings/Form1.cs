@@ -65,7 +65,7 @@ namespace Settings
         private void btnFSys_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog browseFolder = new FolderBrowserDialog();
-            browseFolder.Description = "Find Msg Folder";
+            browseFolder.Description = "Find System Folder";
             if (browseFolder.ShowDialog() == DialogResult.Cancel)
                 return;
 

@@ -27,29 +27,7 @@ namespace XV2Lib
     {
         public static void Read(string path, ref charSkillSet[] css,ref skill[] Super, ref skill[] Ultimate, ref skill[] Evasive, ref skill[] Awaken, ref skill[] blast)
         {
-            using (BinaryReader br = new BinaryReader(File.Open(path, FileMode.Open)))
-            {
-                //Read Top part
-                br.BaseStream.Seek(8, SeekOrigin.Begin);
-                css = new charSkillSet[br.ReadInt32()];
-                int setAddress = br.ReadInt32();
-
-                int supCount = br.ReadInt32(); //super
-                int ultCount = br.ReadInt32(); //ultimate
-                int evaCount = br.ReadInt32(); //evasive
-                int unkCount = br.ReadInt32(); //unknown
-                int blaCount = br.ReadInt32(); //blast
-                int awaCount = br.ReadInt32(); //awaken
-
-                int supAddress = br.ReadInt32();
-                int ultAddress = br.ReadInt32();
-                int evaAddress = br.ReadInt32();
-                int unkAddress = br.ReadInt32();
-                int blaAddress = br.ReadInt32();
-                int awaAddress = br.ReadInt32();
-
-
-            }
+            
         }
 
         public static void ReadCharSet(string path, ref charSkillSet[] css)
@@ -59,10 +37,22 @@ namespace XV2Lib
                 br.BaseStream.Seek(8, SeekOrigin.Begin);
                 css = new charSkillSet[br.ReadInt32()];
                 int setAddress = br.ReadInt32();
-                
+                br.BaseStream.Seek(setAddress, SeekOrigin.Begin);
                 for (int i = 0; i < css.Length; i++)
                 {
-
+                    css[i].charID = br.ReadInt32();
+                    css[i].costumeID = br.ReadInt32();
+                    css[i].skill = new short[9];
+                    css[i].skill[0] = br.ReadInt16();
+                    css[i].skill[1] = br.ReadInt16();
+                    css[i].skill[2] = br.ReadInt16();
+                    css[i].skill[3] = br.ReadInt16();
+                    css[i].skill[4] = br.ReadInt16();
+                    css[i].skill[5] = br.ReadInt16();
+                    css[i].skill[6] = br.ReadInt16();
+                    css[i].skill[7] = br.ReadInt16();
+                    css[i].skill[8] = br.ReadInt16();
+                    br.BaseStream.Seek(6, SeekOrigin.Current);
                 }
 
             }
