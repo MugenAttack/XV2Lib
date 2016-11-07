@@ -41,6 +41,7 @@ namespace CSOEditor
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CSO.Write(Data.ToArray(), FileName);
+            MessageBox.Show("File has been saved!!!");
         }
 
         private void cbList_SelectedIndexChanged(object sender, EventArgs e)

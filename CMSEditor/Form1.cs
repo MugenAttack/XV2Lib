@@ -18,6 +18,7 @@ namespace CMSEditor
         Char_Model_Spec current;
         Char_Model_Spec Copy;
         bool canPaste = false;
+        bool lck = true;
         public Form1()
         {
             InitializeComponent();
@@ -43,10 +44,12 @@ namespace CMSEditor
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CMS.Write(FileName, cms.ToArray());
+            MessageBox.Show("File has been saved!!!");
         }
 
         private void cbList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lck = false;
             current = cms[cbList.SelectedIndex];
             txtChar.Text = current.id.ToString();
             txtSN.Text = current.shortname;
@@ -63,33 +66,44 @@ namespace CMSEditor
             txt11.Text = current.Paths[5];
             txt12.Text = current.Paths[6];
             txt13.Text = current.Paths[7];
+            lck = true;
             
         }
 
         private void txtChar_TextChanged(object sender, EventArgs e)
         {
-            current.id = int.Parse(txtChar.Text);
-            cms[cbList.SelectedIndex] = current;
+            if (lck)
+            {
+                lck = false;
+                current.id = int.Parse(txtChar.Text);
+                cms[cbList.SelectedIndex] = current;
 
-            int temp = cbList.SelectedIndex;
-            cbList.SelectedIndex = 0;
-            cbList.Items.Clear();
-            for (int i = 0; i < cms.Count; i++)
-                cbList.Items.Add(cms[i].id.ToString("000") + " - " + cms[i].shortname);
-            cbList.SelectedIndex = temp;
+                int temp = cbList.SelectedIndex;
+                cbList.SelectedIndex = 0;
+                cbList.Items.Clear();
+                for (int i = 0; i < cms.Count; i++)
+                    cbList.Items.Add(cms[i].id.ToString("000") + " - " + cms[i].shortname);
+                cbList.SelectedIndex = temp;
+                lck = true;
+            }
         }
 
         private void txtSN_TextChanged(object sender, EventArgs e)
         {
-            current.shortname = txtSN.Text;
-            cms[cbList.SelectedIndex] = current;
+            if (lck)
+            {
+                lck = false;
+                current.shortname = txtSN.Text;
+                cms[cbList.SelectedIndex] = current;
 
-            int temp = cbList.SelectedIndex;
-            cbList.SelectedIndex = 0;
-            cbList.Items.Clear();
-            for (int i = 0; i < cms.Count; i++)
-                cbList.Items.Add(cms[i].id.ToString("000") + " - " + cms[i].shortname);
-            cbList.SelectedIndex = temp;
+                int temp = cbList.SelectedIndex;
+                cbList.SelectedIndex = 0;
+                cbList.Items.Clear();
+                for (int i = 0; i < cms.Count; i++)
+                    cbList.Items.Add(cms[i].id.ToString("000") + " - " + cms[i].shortname);
+                cbList.SelectedIndex = temp;
+                lck = true;
+            }
         }
 
         private void txt1_TextChanged(object sender, EventArgs e)

@@ -44,6 +44,7 @@ namespace MSGEditor
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MSGStream.Write(file, FileName);
+            MessageBox.Show("File has been saved!!!");
         }
 
         private void cbList_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,8 +77,7 @@ namespace MSGEditor
 
         private void txtText_TextChanged(object sender, EventArgs e)
         {
-            file.data[cbList.SelectedIndex].NameID = txtName.Text;
-            cbList.Items[cbList.SelectedIndex] = file.data[cbList.SelectedIndex].ID.ToString() + "-" + file.data[cbList.SelectedIndex].NameID;
+            file.data[cbList.SelectedIndex].Lines[cbLine.SelectedIndex] = txtText.Text;
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

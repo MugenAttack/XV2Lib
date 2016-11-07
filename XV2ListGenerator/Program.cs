@@ -59,7 +59,16 @@ namespace XV2ListGenerator
                 string txt = m.Find("met_skill_" + sk.id2.ToString("0000"));
                 sw.WriteLine(sk.id.ToString() + " - " + ReverseHexString4(sk.id.ToString("x4")) + " - " + sk.shortName + " - " + txt);
             }
+            sw.Close();
 
+            m = MSGStream.Read(s.MSGFolder + "/proper_noun_character_name_" + s.language + ".msg");
+            Char_Model_Spec[] cms = CMS.Read(s.SysFolder + "/char_model_spec.cms");
+            sw = new StreamWriter("Character_" + s.language + ".txt");
+            foreach (Char_Model_Spec c in cms)
+            {
+                string txt = m.Find("chara_" + c.shortname + "_000");
+                sw.WriteLine(c.id.ToString() + " - " + ReverseHexString4(c.id.ToString("x4")) + " - " + c.shortname + " - " + txt);
+            }
             sw.Close();
         }
 

@@ -50,6 +50,7 @@ namespace Settings
         private void button1_Click(object sender, EventArgs e)
         {
             s.Write();
+            MessageBox.Show("File has been saved!!!");
         }
 
         private void btnFMSG_Click(object sender, EventArgs e)

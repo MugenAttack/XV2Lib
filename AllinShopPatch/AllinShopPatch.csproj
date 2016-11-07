@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5039F384-DB97-42FB-A2C4-BA2F473AA72E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9FD3AE49-87AB-4535-827B-437ECDAAB707}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XV2Lib</RootNamespace>
-    <AssemblyName>XV2Lib</AssemblyName>
+    <RootNamespace>AllinShopPatch</RootNamespace>
+    <AssemblyName>AllinShopPatch</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\..\..\..\..\XV2Lib\Release\</OutputPath>
@@ -40,19 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AGD.cs" />
-    <Compile Include="AUR.cs" />
-    <Compile Include="BCS.cs" />
-    <Compile Include="CMS.cs" />
-    <Compile Include="CSO.cs" />
-    <Compile Include="CUS.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="IDB.cs" />
-    <Compile Include="MSG.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PSC.cs" />
-    <Compile Include="SchemaBinary.cs" />
-    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XV2Lib\XV2Lib.csproj">
+      <Project>{5039f384-db97-42fb-a2c4-ba2f473aa72e}</Project>
+      <Name>XV2Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
