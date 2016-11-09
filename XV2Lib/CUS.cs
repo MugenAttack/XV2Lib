@@ -19,8 +19,7 @@ namespace XV2Lib
         public string shortName;
         public short id;
         public short id2;
-        public byte RaceLock;
-        public byte unk1;
+        public short unk1;
         public short unk2;
         public short hair;
         public short unk3;
@@ -108,8 +107,7 @@ namespace XV2Lib
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 Super[i].id = br.ReadInt16();
                 Super[i].id2 = br.ReadInt16();
-                Super[i].RaceLock = br.ReadByte();
-                Super[i].unk1 = br.ReadByte();
+                Super[i].unk1 = br.ReadInt16();
                 Super[i].unk2 = br.ReadInt16();
                 Super[i].hair = br.ReadInt16();
                 Super[i].unk3 = br.ReadInt16(); //20
@@ -142,8 +140,7 @@ namespace XV2Lib
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 Ultimate[i].id = br.ReadInt16();
                 Ultimate[i].id2 = br.ReadInt16();
-                Ultimate[i].RaceLock = br.ReadByte();
-                Ultimate[i].unk1 = br.ReadByte();
+                Ultimate[i].unk1 = br.ReadInt16();
                 Ultimate[i].unk2 = br.ReadInt16();
                 Ultimate[i].hair = br.ReadInt16();
                 Ultimate[i].unk3 = br.ReadInt16();
@@ -177,8 +174,7 @@ namespace XV2Lib
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 Evasive[i].id = br.ReadInt16();
                 Evasive[i].id2 = br.ReadInt16();
-                Evasive[i].RaceLock = br.ReadByte();
-                Evasive[i].unk1 = br.ReadByte();
+                Evasive[i].unk1 = br.ReadInt16();
                 Evasive[i].unk2 = br.ReadInt16();
                 Evasive[i].hair = br.ReadInt16();
                 Evasive[i].unk3 = br.ReadInt16();
@@ -212,8 +208,7 @@ namespace XV2Lib
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 blast[i].id = br.ReadInt16();
                 blast[i].id2 = br.ReadInt16();
-                blast[i].RaceLock = br.ReadByte();
-                blast[i].unk1 = br.ReadByte();
+                blast[i].unk1 = br.ReadInt16();
                 blast[i].unk2 = br.ReadInt16();
                 blast[i].hair = br.ReadInt16();
                 blast[i].unk3 = br.ReadInt16();
@@ -246,8 +241,7 @@ namespace XV2Lib
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 Awaken[i].id = br.ReadInt16();
                 Awaken[i].id2 = br.ReadInt16();
-                Awaken[i].RaceLock = br.ReadByte();
-                Awaken[i].unk1 = br.ReadByte();
+                Awaken[i].unk1 = br.ReadInt16();
                 Awaken[i].unk2 = br.ReadInt16();
                 Awaken[i].hair = br.ReadInt16();
                 Awaken[i].unk3 = br.ReadInt16();
@@ -396,7 +390,6 @@ namespace XV2Lib
 
             bw.Write(s.id);
             bw.Write(s.id2);
-            bw.Write(s.RaceLock);
             bw.Write(s.unk1);
             bw.Write(s.unk2);
             bw.Write(s.hair);

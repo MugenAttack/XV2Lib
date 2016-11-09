@@ -107,8 +107,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbSkill = new System.Windows.Forms.ComboBox();
@@ -142,14 +140,16 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -228,7 +228,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(329, 334);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Character Skill List";
+            this.tabPage1.Text = "Character Skill Sets";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtVal
@@ -237,6 +237,7 @@
             this.txtVal.Name = "txtVal";
             this.txtVal.Size = new System.Drawing.Size(67, 20);
             this.txtVal.TabIndex = 63;
+            this.txtVal.TextChanged += new System.EventHandler(this.txtVal_TextChanged);
             // 
             // label28
             // 
@@ -253,6 +254,7 @@
             this.txtAwa.Name = "txtAwa";
             this.txtAwa.Size = new System.Drawing.Size(67, 20);
             this.txtAwa.TabIndex = 61;
+            this.txtAwa.TextChanged += new System.EventHandler(this.txtAwa_TextChanged);
             // 
             // label18
             // 
@@ -269,6 +271,7 @@
             this.txtKiB.Name = "txtKiB";
             this.txtKiB.Size = new System.Drawing.Size(67, 20);
             this.txtKiB.TabIndex = 59;
+            this.txtKiB.TextChanged += new System.EventHandler(this.txtKiB_TextChanged);
             // 
             // label15
             // 
@@ -285,6 +288,7 @@
             this.txtEva.Name = "txtEva";
             this.txtEva.Size = new System.Drawing.Size(67, 20);
             this.txtEva.TabIndex = 57;
+            this.txtEva.TextChanged += new System.EventHandler(this.txtEva_TextChanged);
             // 
             // label16
             // 
@@ -301,6 +305,7 @@
             this.txtUlt2.Name = "txtUlt2";
             this.txtUlt2.Size = new System.Drawing.Size(67, 20);
             this.txtUlt2.TabIndex = 55;
+            this.txtUlt2.TextChanged += new System.EventHandler(this.txtUlt2_TextChanged);
             // 
             // label13
             // 
@@ -317,6 +322,7 @@
             this.txtUlt1.Name = "txtUlt1";
             this.txtUlt1.Size = new System.Drawing.Size(67, 20);
             this.txtUlt1.TabIndex = 53;
+            this.txtUlt1.TextChanged += new System.EventHandler(this.txtUlt1_TextChanged);
             // 
             // label14
             // 
@@ -333,6 +339,7 @@
             this.txtSup4.Name = "txtSup4";
             this.txtSup4.Size = new System.Drawing.Size(67, 20);
             this.txtSup4.TabIndex = 51;
+            this.txtSup4.TextChanged += new System.EventHandler(this.txtSup4_TextChanged);
             // 
             // label11
             // 
@@ -349,6 +356,7 @@
             this.txtSup3.Name = "txtSup3";
             this.txtSup3.Size = new System.Drawing.Size(67, 20);
             this.txtSup3.TabIndex = 49;
+            this.txtSup3.TextChanged += new System.EventHandler(this.txtSup3_TextChanged);
             // 
             // label12
             // 
@@ -365,6 +373,7 @@
             this.txtSup2.Name = "txtSup2";
             this.txtSup2.Size = new System.Drawing.Size(67, 20);
             this.txtSup2.TabIndex = 47;
+            this.txtSup2.TextChanged += new System.EventHandler(this.txtSup2_TextChanged);
             // 
             // label9
             // 
@@ -381,6 +390,7 @@
             this.txtSup1.Name = "txtSup1";
             this.txtSup1.Size = new System.Drawing.Size(67, 20);
             this.txtSup1.TabIndex = 45;
+            this.txtSup1.TextChanged += new System.EventHandler(this.txtSup1_TextChanged);
             // 
             // label10
             // 
@@ -397,6 +407,7 @@
             this.txtCostID.Name = "txtCostID";
             this.txtCostID.Size = new System.Drawing.Size(67, 20);
             this.txtCostID.TabIndex = 43;
+            this.txtCostID.TextChanged += new System.EventHandler(this.txtCostID_TextChanged);
             // 
             // label19
             // 
@@ -413,6 +424,7 @@
             this.txtCharID.Name = "txtCharID";
             this.txtCharID.Size = new System.Drawing.Size(67, 20);
             this.txtCharID.TabIndex = 41;
+            this.txtCharID.TextChanged += new System.EventHandler(this.txtCharID_TextChanged);
             // 
             // label17
             // 
@@ -430,6 +442,7 @@
             this.cbChar.Name = "cbChar";
             this.cbChar.Size = new System.Drawing.Size(165, 21);
             this.cbChar.TabIndex = 0;
+            this.cbChar.SelectedIndexChanged += new System.EventHandler(this.cbChar_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -475,8 +488,6 @@
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.textBox5);
             this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.textBox3);
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.cbSkill);
@@ -825,22 +836,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "1?";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(247, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Race Lock";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(245, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(64, 20);
-            this.textBox3.TabIndex = 6;
-            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(173, 62);
@@ -925,8 +920,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbSkill;
