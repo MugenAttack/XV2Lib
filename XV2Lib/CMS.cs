@@ -42,18 +42,19 @@ namespace XV2Lib
                 Data[i].unk4 = br.ReadInt16();
                 Data[i].unk5 = br.ReadInt16();
                 br.BaseStream.Seek(4, SeekOrigin.Current);
-                Data[i].Paths = new string[8];
+                Data[i].Paths = new string[9];
                 Data[i].Paths[0] = ReadText(ref br, br.ReadInt32());
                 Data[i].Paths[1] = ReadText(ref br, br.ReadInt32());
                 br.BaseStream.Seek(4, SeekOrigin.Current);
                 Data[i].Paths[2] = ReadText(ref br, br.ReadInt32());
-                br.BaseStream.Seek(8, SeekOrigin.Current);
-                Data[i].Paths[3] = ReadText(ref br, br.ReadInt32());
+                Data[i].Paths[3] = ReadText(ref br, br.ReadInt32());//additional
+                br.BaseStream.Seek(4, SeekOrigin.Current);
                 Data[i].Paths[4] = ReadText(ref br, br.ReadInt32());
                 Data[i].Paths[5] = ReadText(ref br, br.ReadInt32());
                 Data[i].Paths[6] = ReadText(ref br, br.ReadInt32());
-                br.BaseStream.Seek(8, SeekOrigin.Current);
                 Data[i].Paths[7] = ReadText(ref br, br.ReadInt32());
+                br.BaseStream.Seek(8, SeekOrigin.Current);
+                Data[i].Paths[8] = ReadText(ref br, br.ReadInt32());
             }
 
             br.Close();
@@ -139,12 +140,12 @@ namespace XV2Lib
                     else
                         bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[2])]);
 
-                    bw.BaseStream.Seek(8, SeekOrigin.Current);
-                    if (Data[i].Paths[3] == "")
+                    if (Data[i].Paths[3] == "")//additional
                         bw.Write((int)0);
                     else
                         bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[3])]);
 
+                    bw.BaseStream.Seek(4, SeekOrigin.Current);
                     if (Data[i].Paths[4] == "")
                         bw.Write((int)0);
                     else
@@ -160,11 +161,16 @@ namespace XV2Lib
                     else
                         bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[6])]);
 
-                    bw.BaseStream.Seek(8, SeekOrigin.Current);
                     if (Data[i].Paths[7] == "")
                         bw.Write((int)0);
                     else
                         bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[7])]);
+
+                    bw.BaseStream.Seek(8, SeekOrigin.Current);
+                    if (Data[i].Paths[8] == "")
+                        bw.Write((int)0);
+                    else
+                        bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[8])]);
                 }
 
             }

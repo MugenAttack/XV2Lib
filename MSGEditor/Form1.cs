@@ -226,7 +226,7 @@ namespace MSGEditor
         private void f1_Click(object sender, EventArgs e)
         {
             file = MSGStream.Read(sf[0]);
-
+            FileName = sf[0];
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
@@ -235,7 +235,7 @@ namespace MSGEditor
         private void f2_Click(object sender, EventArgs e)
         {
             file = MSGStream.Read(sf[1]);
-
+            FileName = sf[1];
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
@@ -244,7 +244,7 @@ namespace MSGEditor
         private void f3_Click(object sender, EventArgs e)
         {
             file = MSGStream.Read(sf[2]);
-
+            FileName = sf[2];
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
@@ -253,7 +253,7 @@ namespace MSGEditor
         private void f4_Click(object sender, EventArgs e)
         {
             file = MSGStream.Read(sf[3]);
-
+            FileName = sf[3];
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
@@ -262,7 +262,7 @@ namespace MSGEditor
         private void f5_Click(object sender, EventArgs e)
         {
             file = MSGStream.Read(sf[4]);
-
+            FileName = sf[4];
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
