@@ -165,26 +165,30 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -506,6 +510,7 @@
             this.txt18.Name = "txt18";
             this.txt18.Size = new System.Drawing.Size(66, 20);
             this.txt18.TabIndex = 49;
+            this.txt18.TextChanged += new System.EventHandler(this.txt18_TextChanged);
             // 
             // label34
             // 
@@ -522,6 +527,7 @@
             this.txt17.Name = "txt17";
             this.txt17.Size = new System.Drawing.Size(64, 20);
             this.txt17.TabIndex = 47;
+            this.txt17.TextChanged += new System.EventHandler(this.txt17_TextChanged);
             // 
             // label35
             // 
@@ -538,6 +544,7 @@
             this.txt16.Name = "txt16";
             this.txt16.Size = new System.Drawing.Size(66, 20);
             this.txt16.TabIndex = 45;
+            this.txt16.TextChanged += new System.EventHandler(this.txt16_TextChanged);
             // 
             // label32
             // 
@@ -554,6 +561,7 @@
             this.txt15.Name = "txt15";
             this.txt15.Size = new System.Drawing.Size(64, 20);
             this.txt15.TabIndex = 43;
+            this.txt15.TextChanged += new System.EventHandler(this.txt15_TextChanged);
             // 
             // label33
             // 
@@ -570,6 +578,7 @@
             this.txt14.Name = "txt14";
             this.txt14.Size = new System.Drawing.Size(66, 20);
             this.txt14.TabIndex = 41;
+            this.txt14.TextChanged += new System.EventHandler(this.txt14_TextChanged);
             // 
             // label30
             // 
@@ -586,6 +595,7 @@
             this.txt13.Name = "txt13";
             this.txt13.Size = new System.Drawing.Size(64, 20);
             this.txt13.TabIndex = 39;
+            this.txt13.TextChanged += new System.EventHandler(this.txt13_TextChanged);
             // 
             // label31
             // 
@@ -602,6 +612,7 @@
             this.txt12.Name = "txt12";
             this.txt12.Size = new System.Drawing.Size(66, 20);
             this.txt12.TabIndex = 37;
+            this.txt12.TextChanged += new System.EventHandler(this.txt12_TextChanged);
             // 
             // label29
             // 
@@ -618,6 +629,7 @@
             this.txt11.Name = "txt11";
             this.txt11.Size = new System.Drawing.Size(64, 20);
             this.txt11.TabIndex = 35;
+            this.txt11.TextChanged += new System.EventHandler(this.txt11_TextChanged);
             // 
             // label24
             // 
@@ -634,6 +646,7 @@
             this.txt10.Name = "txt10";
             this.txt10.Size = new System.Drawing.Size(66, 20);
             this.txt10.TabIndex = 33;
+            this.txt10.TextChanged += new System.EventHandler(this.txt10_TextChanged);
             // 
             // label25
             // 
@@ -650,6 +663,7 @@
             this.txt9.Name = "txt9";
             this.txt9.Size = new System.Drawing.Size(64, 20);
             this.txt9.TabIndex = 31;
+            this.txt9.TextChanged += new System.EventHandler(this.txt9_TextChanged);
             // 
             // label26
             // 
@@ -666,6 +680,7 @@
             this.txt8.Name = "txt8";
             this.txt8.Size = new System.Drawing.Size(67, 20);
             this.txt8.TabIndex = 29;
+            this.txt8.TextChanged += new System.EventHandler(this.txt8_TextChanged);
             // 
             // label27
             // 
@@ -682,6 +697,7 @@
             this.txt7.Name = "txt7";
             this.txt7.Size = new System.Drawing.Size(64, 20);
             this.txt7.TabIndex = 27;
+            this.txt7.TextChanged += new System.EventHandler(this.txt7_TextChanged);
             // 
             // label22
             // 
@@ -698,6 +714,7 @@
             this.txt6.Name = "txt6";
             this.txt6.Size = new System.Drawing.Size(66, 20);
             this.txt6.TabIndex = 25;
+            this.txt6.TextChanged += new System.EventHandler(this.txt6_TextChanged);
             // 
             // label23
             // 
@@ -714,6 +731,7 @@
             this.txt5.Name = "txt5";
             this.txt5.Size = new System.Drawing.Size(64, 20);
             this.txt5.TabIndex = 23;
+            this.txt5.TextChanged += new System.EventHandler(this.txt5_TextChanged);
             // 
             // label21
             // 
@@ -730,6 +748,7 @@
             this.txt4.Name = "txt4";
             this.txt4.Size = new System.Drawing.Size(67, 20);
             this.txt4.TabIndex = 21;
+            this.txt4.TextChanged += new System.EventHandler(this.txt4_TextChanged);
             // 
             // label20
             // 

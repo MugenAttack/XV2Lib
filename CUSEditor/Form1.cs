@@ -200,6 +200,7 @@ namespace CUSEditor
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lck = false;
             switch (cbType.SelectedIndex)
             {
                 case 0:
@@ -229,6 +230,7 @@ namespace CUSEditor
                     break;
 
             }
+            lck = true;
         }
 
         private void cbSkill_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,6 +254,7 @@ namespace CUSEditor
                     break;
             }
 
+            lck = false;
             txtShortName.Text = currentSkill.shortName;
             txtid.Text = currentSkill.id.ToString();
             txtid2.Text = currentSkill.id2.ToString();
@@ -274,42 +277,491 @@ namespace CUSEditor
             txt16.Text = currentSkill.unk9.ToString();
             txt17.Text = currentSkill.unk10.ToString();
             txt18.Text = currentSkill.unk11.ToString();
+            lck = true;
 
+        }
+
+        private void UpdateCurrentSkill()
+        {
+            switch (cbType.SelectedIndex)
+            {
+                case 0:
+                    Super[cbSkill.SelectedIndex] = currentSkill;
+                    break;
+                case 1:
+                    Ultimate[cbSkill.SelectedIndex] = currentSkill;
+                    break;
+                case 2:
+                    Evasive[cbSkill.SelectedIndex] = currentSkill;
+                    break;
+                case 3:
+                    blast[cbSkill.SelectedIndex] = currentSkill;
+                    break;
+                case 4:
+                    Awaken[cbSkill.SelectedIndex] = currentSkill;
+                    break;
+            }
         }
 
         private void txtShortName_TextChanged(object sender, EventArgs e)
         {
+            if (lck)
+            {
+                currentSkill.shortName = txtShortName.Text;
+                UpdateCurrentSkill();
+                lck = false;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Super.Count; i++)
+                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        break;
+                    case 1:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Ultimate.Count; i++)
+                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        break;
+                    case 2:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Evasive.Count; i++)
+                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
+                        break;
+                    case 3:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < blast.Count; i++)
+                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
+                        break;
+                    case 4:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Awaken.Count; i++)
+                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
+                        break;
+
+                }
+                lck = true;
+            }
+
 
         }
 
         private void txtid_TextChanged(object sender, EventArgs e)
         {
+            if (lck)
+            {
+                currentSkill.id = short.Parse(txtid.Text);
+                UpdateCurrentSkill();
+                lck = false;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Super.Count; i++)
+                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        break;
+                    case 1:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Ultimate.Count; i++)
+                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        break;
+                    case 2:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Evasive.Count; i++)
+                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
+                        break;
+                    case 3:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < blast.Count; i++)
+                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
+                        break;
+                    case 4:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Awaken.Count; i++)
+                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
+                        break;
 
+                }
+                lck = true;
+            }
         }
 
         private void txtid2_TextChanged(object sender, EventArgs e)
         {
-
+            if (lck)
+            {
+                currentSkill.id2 = short.Parse(txtid2.Text);
+                UpdateCurrentSkill();
+            }
         }
 
         private void txt1_TextChanged(object sender, EventArgs e)
         {
-
+            if (lck)
+            {
+                currentSkill.unk1 = short.Parse(txt1.Text);
+                UpdateCurrentSkill();
+            }
         }
 
         private void txt2_TextChanged(object sender, EventArgs e)
         {
-
+            if (lck)
+            {
+                currentSkill.unk2 = short.Parse(txt2.Text);
+                UpdateCurrentSkill();
+            }
         }
 
         private void txtHair_TextChanged(object sender, EventArgs e)
         {
-
+            if (lck)
+            {
+                currentSkill.hair = short.Parse(txtHair.Text);
+                UpdateCurrentSkill();
+            }
         }
 
         private void txt3_TextChanged(object sender, EventArgs e)
         {
+            if (lck)
+            {
+                currentSkill.unk3 = short.Parse(txt3.Text);
+                UpdateCurrentSkill();
+            }
+        }
 
+        private void txt4_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[0] = txt4.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt5_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[1] = txt5.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt6_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[2] = txt6.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt7_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[3] = txt7.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt8_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[4] = txt8.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt9_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[5] = txt9.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt10_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.Paths[6] = txt10.Text;
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt11_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk4 = short.Parse(txt11.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt12_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk5 = short.Parse(txt12.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt13_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk6 = short.Parse(txt13.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt14_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk7 = short.Parse(txt14.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt15_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk8 = short.Parse(txt15.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt16_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk9 = short.Parse(txt16.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt17_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk10 = short.Parse(txt17.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void txt18_TextChanged(object sender, EventArgs e)
+        {
+            if (lck)
+            {
+                currentSkill.unk11 = short.Parse(txt18.Text);
+                UpdateCurrentSkill();
+            }
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                charSkillSet n = new charSkillSet();
+                n.skill = new short[12];
+                css.Add(n);
+
+            }
+            else
+            {
+                skill n = new skill();
+                n.Paths = new string[7];
+
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        Super.Add(n);
+                        break;
+                    case 1:
+                        Ultimate.Add(n);
+                        break;
+                    case 2:
+                        Evasive.Add(n);
+                        break;
+                    case 3:
+                        blast.Add(n);
+                        break;
+                    case 4:
+                        Awaken.Add(n);
+                        break;
+                }
+
+                lck = false;
+                cbSkill.SelectedIndex = 0;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Super.Count; i++)
+                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        break;
+                    case 1:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Ultimate.Count; i++)
+                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        break;
+                    case 2:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Evasive.Count; i++)
+                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
+                        break;
+                    case 3:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < blast.Count; i++)
+                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
+                        break;
+                    case 4:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Awaken.Count; i++)
+                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
+                        break;
+
+                }
+                lck = true;
+
+            }
+        
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                css.RemoveAt(cbChar.SelectedIndex);
+            }
+            else
+            {
+                
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        Super.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 1:
+                        Ultimate.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 2:
+                        Evasive.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 3:
+                        blast.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 4:
+                        Awaken.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                }
+
+                lck = false;
+                cbSkill.SelectedIndex = 0;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Super.Count; i++)
+                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        break;
+                    case 1:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Ultimate.Count; i++)
+                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        break;
+                    case 2:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Evasive.Count; i++)
+                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
+                        break;
+                    case 3:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < blast.Count; i++)
+                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
+                        break;
+                    case 4:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Awaken.Count; i++)
+                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
+                        break;
+
+                }
+                lck = true;
+
+            }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                copySet = currentSet;
+            }
+            else
+            {
+
+                copySkill = currentSkill;
+
+                
+
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                currentSet = copySet;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
+            else
+            {
+
+                currentSkill = copySkill;
+                UpdateCurrentSkill();    
+                
+
+                lck = false;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Super.Count; i++)
+                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        break;
+                    case 1:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Ultimate.Count; i++)
+                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        break;
+                    case 2:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Evasive.Count; i++)
+                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
+                        break;
+                    case 3:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < blast.Count; i++)
+                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
+                        break;
+                    case 4:
+                        cbSkill.Items.Clear();
+                        for (int i = 0; i < Awaken.Count; i++)
+                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
+                        break;
+
+                }
+                lck = true;
+
+            }
         }
     }
 }
