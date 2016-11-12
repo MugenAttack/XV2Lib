@@ -82,10 +82,11 @@ namespace CMSEditor
 
         private void txtChar_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
+            int p;
+            if (lck && int.TryParse(txtChar.Text, out p))
             {
                 lck = false;
-                current.id = int.Parse(txtChar.Text);
+                current.id = p;
                 cms[cbList.SelectedIndex] = current;
 
                 int temp = cbList.SelectedIndex;
@@ -118,32 +119,52 @@ namespace CMSEditor
 
         private void txt1_TextChanged(object sender, EventArgs e)
         {
-            current.unk1 = int.Parse(txt1.Text);
-            cms[cbList.SelectedIndex] = current;
+            int p;
+            if (int.TryParse(txt1.Text, out p))
+            {
+                current.unk1 = p;
+                cms[cbList.SelectedIndex] = current;
+            }
         }
 
         private void txt2_TextChanged(object sender, EventArgs e)
         {
-            current.unk2 = short.Parse(txt2.Text);
-            cms[cbList.SelectedIndex] = current;
+            short p;
+            if (short.TryParse(txt2.Text, out p))
+            {
+                current.unk2 = p;
+                cms[cbList.SelectedIndex] = current;
+            }
         }
 
         private void txt3_TextChanged(object sender, EventArgs e)
         {
-            current.unk3 = short.Parse(txt3.Text);
-            cms[cbList.SelectedIndex] = current;
+            short p;
+            if (short.TryParse(txt3.Text, out p))
+            {
+                current.unk3 = p;
+                cms[cbList.SelectedIndex] = current;
+            }
         }
 
         private void txt4_TextChanged(object sender, EventArgs e)
         {
-            current.unk4 = short.Parse(txt4.Text);
-            cms[cbList.SelectedIndex] = current;
+            short p;
+            if (short.TryParse(txt4.Text, out p))
+            {
+                current.unk4 = p;
+                cms[cbList.SelectedIndex] = current;
+            }
         }
 
         private void txt5_TextChanged(object sender, EventArgs e)
         {
-            current.unk5 = short.Parse(txt5.Text);
-            cms[cbList.SelectedIndex] = current;
+            short p;
+            if (short.TryParse(txt5.Text, out p))
+            {
+                current.unk5 = p;
+                cms[cbList.SelectedIndex] = current;
+            }
         }
 
         private void txt6_TextChanged(object sender, EventArgs e)

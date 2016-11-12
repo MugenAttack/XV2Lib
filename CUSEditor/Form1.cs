@@ -104,10 +104,11 @@ namespace CUSEditor
 
         private void txtCharID_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
+            int p;
+            if (lck && int.TryParse(txtCharID.Text,out p))
             {
                 lck = false;
-                currentSet.charID = int.Parse(txtCharID.Text);
+                currentSet.charID = p;
                 css[cbChar.SelectedIndex] = currentSet;
 
                 int temp = cbChar.SelectedIndex;
@@ -122,10 +123,11 @@ namespace CUSEditor
 
         private void txtCostID_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
+            int p;
+            if (lck && int.TryParse(txtCostID.Text, out p))
             {
                 lck = false;
-                currentSet.costumeID = int.Parse(txtCostID.Text);
+                currentSet.costumeID = p;
                 css[cbChar.SelectedIndex] = currentSet;
 
                 int temp = cbChar.SelectedIndex;
@@ -140,44 +142,72 @@ namespace CUSEditor
 
         private void txtSup1_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[0] = short.Parse(txtSup1.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtSup1.Text, out p))
+            {
+                currentSet.skill[0] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtSup2_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[1] = short.Parse(txtSup2.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtSup2.Text, out p))
+            {
+                currentSet.skill[1] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtSup3_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[2] = short.Parse(txtSup3.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtSup3.Text, out p))
+            {
+                currentSet.skill[2] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtSup4_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[3] = short.Parse(txtSup4.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtSup4.Text, out p))
+            {
+                currentSet.skill[3] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtUlt1_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[4] = short.Parse(txtUlt1.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtUlt1.Text, out p))
+            {
+                currentSet.skill[4] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtUlt2_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[5] = short.Parse(txtUlt2.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtUlt2.Text, out p))
+            {
+                currentSet.skill[5] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtEva_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[6] = short.Parse(txtEva.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            short p;
+            if (lck && short.TryParse(txtEva.Text, out p))
+            {
+                currentSet.skill[6] = p;
+                css[cbChar.SelectedIndex] = currentSet;
+            }
         }
 
         private void txtKiB_TextChanged(object sender, EventArgs e)
@@ -258,6 +288,7 @@ namespace CUSEditor
             txtShortName.Text = currentSkill.shortName;
             txtid.Text = currentSkill.id.ToString();
             txtid2.Text = currentSkill.id2.ToString();
+            textBox1.Text = currentSkill.racelock.ToString();
             txt1.Text = currentSkill.unk1.ToString();
             txt2.Text = currentSkill.unk2.ToString();
             txtHair.Text = currentSkill.hair.ToString();
@@ -394,11 +425,22 @@ namespace CUSEditor
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //race lock
+            byte p;
+            if (lck && byte.TryParse(textBox1.Text,out p))
+            {
+                currentSkill.racelock = p;
+                UpdateCurrentSkill();
+            }
+        }
+
         private void txt1_TextChanged(object sender, EventArgs e)
         {
             if (lck)
             {
-                currentSkill.unk1 = short.Parse(txt1.Text);
+                currentSkill.unk1 = byte.Parse(txt1.Text);
                 UpdateCurrentSkill();
             }
         }
@@ -573,6 +615,14 @@ namespace CUSEditor
                 n.skill = new short[12];
                 css.Add(n);
 
+                lck = false;
+                int temp = cbChar.SelectedIndex;
+                cbChar.SelectedIndex = 0;
+                cbChar.Items.Clear();
+                for (int i = 0; i < css.Count; i++)
+                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                cbChar.SelectedIndex = temp;
+                lck = true;
             }
             else
             {
@@ -640,6 +690,14 @@ namespace CUSEditor
             if (tabControl1.SelectedIndex == 0)
             {
                 css.RemoveAt(cbChar.SelectedIndex);
+                lck = false;
+                int temp = cbChar.SelectedIndex;
+                cbChar.SelectedIndex = 0;
+                cbChar.Items.Clear();
+                for (int i = 0; i < css.Count; i++)
+                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                cbChar.SelectedIndex = temp;
+                lck = true;
             }
             else
             {
@@ -721,6 +779,15 @@ namespace CUSEditor
             {
                 currentSet = copySet;
                 css[cbChar.SelectedIndex] = currentSet;
+
+                lck = false;
+                int temp = cbChar.SelectedIndex;
+                cbChar.SelectedIndex = 0;
+                cbChar.Items.Clear();
+                for (int i = 0; i < css.Count; i++)
+                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                cbChar.SelectedIndex = temp;
+                lck = true;
             }
             else
             {
@@ -763,5 +830,7 @@ namespace CUSEditor
 
             }
         }
+
+        
     }
 }

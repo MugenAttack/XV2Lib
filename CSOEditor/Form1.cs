@@ -59,10 +59,11 @@ namespace CSOEditor
 
         private void txtChar_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
+            int p;
+            if (lck && int.TryParse(txtChar.Text, out p))
             {
                 lck = false;
-                current.Char_ID = int.Parse(txtChar.Text);
+                current.Char_ID = p;
                 Data[cbList.SelectedIndex] = current;
 
                 int temp = cbList.SelectedIndex;
@@ -77,10 +78,11 @@ namespace CSOEditor
 
         private void txtCostume_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
+            int p;
+            if (lck && int.TryParse(txtCostume.Text,out p))
             {
                 lck = false;
-                current.Costume_ID = int.Parse(txtCostume.Text);
+                current.Costume_ID = p;
                 Data[cbList.SelectedIndex] = current;
                 int temp = cbList.SelectedIndex;
                 cbList.SelectedIndex = 0;
@@ -120,6 +122,10 @@ namespace CSOEditor
         {
             CSO_Data c = new CSO_Data();
             c.Paths = new string[4];
+            c.Paths[0] = "";
+            c.Paths[1] = "";
+            c.Paths[2] = "";
+            c.Paths[3] = "";
             Data.Add(c);
             
             cbList.SelectedIndex = 0;
