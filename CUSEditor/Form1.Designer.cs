@@ -65,6 +65,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.cbChar = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txt18 = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.txt17 = new System.Windows.Forms.TextBox();
@@ -111,8 +113,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbSkill = new System.Windows.Forms.ComboBox();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -508,6 +508,23 @@
             this.tabPage2.Text = "Skills";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(245, 62);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(66, 20);
+            this.textBox1.TabIndex = 51;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(247, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Race Lock";
+            // 
             // txt18
             // 
             this.txt18.Location = new System.Drawing.Point(245, 293);
@@ -706,11 +723,12 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(247, 138);
+            this.label22.Location = new System.Drawing.Point(243, 138);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(19, 13);
+            this.label22.Size = new System.Drawing.Size(69, 13);
             this.label22.TabIndex = 26;
-            this.label22.Text = "7?";
+            this.label22.Text = "Sound Effect";
+            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // txt6
             // 
@@ -905,23 +923,6 @@
             this.cbType.Size = new System.Drawing.Size(137, 21);
             this.cbType.TabIndex = 0;
             this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(245, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 20);
-            this.textBox1.TabIndex = 51;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(247, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 50;
-            this.label3.Text = "Race Lock";
             // 
             // Form1
             // 
