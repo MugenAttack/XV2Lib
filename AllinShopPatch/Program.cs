@@ -21,7 +21,7 @@ namespace AllinShopPatch
             {
                 if (file.items[i].buy == 0)
                     file.items[i].buy = file.items[i].sell * 2;
-                file.items[i].unk2 = 32767;
+                file.items[i].unk2 = 32767; //shop override id
             }
             file.Write(s.SysFolder + "/item/talisman_item.idb");
 

@@ -21,10 +21,16 @@ namespace XV2Lib
     public class PSC
     {
         public PSC_Char[] list;
-        SchemaBinary schema;
+        public SchemaBinary schema;
         
-        public PSC(string schemaPath)
+        public PSC()
         {
+            
+        }
+
+        public void SetSchema(string schemaPath)
+        {
+            schema = new SchemaBinary();
             schema.ReadSchema(schemaPath);
         }
 
@@ -76,7 +82,5 @@ namespace XV2Lib
 
             }
         }
-
-
     }
 }

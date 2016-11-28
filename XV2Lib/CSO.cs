@@ -102,10 +102,26 @@ namespace XV2Lib
                     bw.BaseStream.Seek(16 + (32 * i), SeekOrigin.Begin);
                     bw.Write(Data[i].Char_ID);
                     bw.Write(Data[i].Costume_ID);
-                    bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[0])]);
-                    bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[1])]);
-                    bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[2])]);
-                    bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[3])]);
+
+                    if (Data[i].Paths[0] == "")
+                        bw.Write((int)0);
+                    else
+                        bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[0])]);
+
+                    if (Data[i].Paths[1] == "")
+                        bw.Write((int)0);
+                    else
+                        bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[1])]);
+
+                    if (Data[i].Paths[2] == "")
+                        bw.Write((int)0);
+                    else
+                        bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[2])]);
+
+                    if (Data[i].Paths[3] == "")
+                        bw.Write((int)0);
+                    else
+                        bw.Write(wordAddress[CmnText.IndexOf(Data[i].Paths[3])]);
                  
                 }
 

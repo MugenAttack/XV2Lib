@@ -12,10 +12,10 @@ namespace XV2ListGenerator
         static void Main(string[] args)
         {
             skill[] Super = new skill[1];
-            skill[] Ultimate = new skill[1]; ;
-            skill[] Evasive = new skill[1]; ;
-            skill[] blast = new skill[1]; ;
-            skill[] Awaken = new skill[1]; ;
+            skill[] Ultimate = new skill[1]; 
+            skill[] Evasive = new skill[1]; 
+            skill[] blast = new skill[1]; 
+            skill[] Awaken = new skill[1]; 
             Settings s = new Settings();
             s.Read();
 

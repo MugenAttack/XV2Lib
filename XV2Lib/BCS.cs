@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XV2Lib
 {
-    struct BCSModelData
+    struct BCSPartData
     {
         short id;
         short id2;
@@ -23,7 +23,7 @@ namespace XV2Lib
 
         }
 
-        public static void injectModelSetData(string file, int id, BCSModelData[] Data)
+        public static void injectModelSetData(string file, int id, BCSPartData[] Data)
         {
 
         }

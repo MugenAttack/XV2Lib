@@ -14,7 +14,7 @@ namespace MSGEditor
 {
     public partial class Form1 : Form
     {
-        MSG file;
+        public MSG file;
         string FileName;
         List<string> sf = new List<string>();
         public Form1()
@@ -266,6 +266,12 @@ namespace MSGEditor
             cbList.Items.Clear();
             for (int i = 0; i < file.data.Length; i++)
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Search ns = new Search(this);
+            ns.Show();
         }
     }
 }

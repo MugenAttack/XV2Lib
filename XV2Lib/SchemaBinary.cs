@@ -7,53 +7,58 @@ using System.IO;
 
 namespace XV2Lib
 {
-    enum type{bin_byte,bin_int16,bin_int32,bin_float}
+    public enum type{bin_byte,bin_int16,bin_int32,bin_float}
 
-    struct BinaryDR //Binary Data Read
+    public struct BinaryDR //Binary Data Read
     {
         public int offset;
         public type _type;
     }
 
-    class SchemaBinary
+    public class SchemaBinary
     {
-        int maxSize;
-        Dictionary<string,BinaryDR> DataSet;
+        
+        Dictionary<string,BinaryDR> DataSet = new Dictionary<string, BinaryDR>();
 
         public void ReadSchema(string file)
         {
             StreamReader sr = new StreamReader(file);
-            sr.ReadLine();
+          
             while (!sr.EndOfStream)
             {
+                
                 string line = sr.ReadLine();
+                
                 string[] input = line.Split(",".ToCharArray());
-
-                type t = type.bin_byte;
-                input[2].Replace(" ", "");
-                switch (input[2])
+                if (input.Length == 3)
                 {
-                    case "byte":
-                        t = type.bin_byte;
-                        break;
-                    case "int16":
-                        t = type.bin_int16;
-                        break;
-                    case "int32":
-                        t = type.bin_int32;
-                        break;
-                    case "float":
-                        t = type.bin_float;
-                        break;
+                    type t = type.bin_byte;
+                    input[2].Replace(" ", "");
+                    switch (input[2])
+                    {
+                        case "byte":
+                            t = type.bin_byte;
+                            break;
+                        case "int16":
+                            t = type.bin_int16;
+                            break;
+                        case "int32":
+                            t = type.bin_int32;
+                            break;
+                        case "float":
+                            t = type.bin_float;
+                            break;
 
+                    }
+
+                    BinaryDR BDR;
+                    BDR.offset = int.Parse(input[1]);
+                    BDR._type = t;
+                    DataSet.Add(input[0], BDR);
                 }
-
-                BinaryDR BDR;
-                BDR.offset = int.Parse(input[1]);
-                BDR._type = t;
-                DataSet.Add(input[0], BDR);
-
             }
+         
+            sr.Close();
         }
 
 

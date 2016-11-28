@@ -44,8 +44,10 @@
     <Compile Include="AUR.cs" />
     <Compile Include="BCS.cs" />
     <Compile Include="CMS.cs" />
+    <Compile Include="CMSRegistry.cs" />
     <Compile Include="CSO.cs" />
     <Compile Include="CUS.cs" />
+    <Compile Include="CUSRegistry.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IDB.cs" />
     <Compile Include="MSG.cs" />

@@ -13,18 +13,16 @@ namespace CUSEditor
     public partial class Form1 : Form
     {
         string FileName;
-        List<skill> Super = new List<skill>();
-        List<skill> Ultimate = new List<skill>();
-        List<skill> Evasive = new List<skill>();
-        List<skill> blast = new List<skill>();
-        List<skill> Awaken = new List<skill>();
-        List<charSkillSet> css = new List<charSkillSet>();
+        CUSRegistry file;
+        
         bool lck = true;
         charSkillSet copySet;
         charSkillSet currentSet;
         skill copySkill;
         skill currentSkill;
-
+        Settings s;
+        bool infoLoaded = false;
+        
         public Form1()
         {
             InitializeComponent();
@@ -38,66 +36,41 @@ namespace CUSEditor
             if (browseFile.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            skill[] pSuper = new skill[1];
-            skill[] pUltimate = new skill[1];
-            skill[] pEvasive = new skill[1];
-            skill[] pblast = new skill[1];
-            skill[] pAwaken = new skill[1];
-            charSkillSet[] pcss = new charSkillSet[1];
-            
+
             FileName = browseFile.FileName;
-            CUS.Read(FileName, ref pcss, ref pSuper, ref pUltimate, ref pEvasive, ref pAwaken, ref pblast);
+            //read CUS
+            file.readCUS(FileName);
 
-            Super.Clear();
-            Ultimate.Clear();
-            Evasive.Clear();
-            blast.Clear();
-            Awaken.Clear();
-            css.Clear();
-
-            Super.AddRange(pSuper);
-            Ultimate.AddRange(pUltimate);
-            Evasive.AddRange(pEvasive);
-            blast.AddRange(pblast);
-            Awaken.AddRange(pAwaken);
-            css.AddRange(pcss);
-
+            bool infoLoaded = s.Read();
+            if (infoLoaded)
+            {
+                file.BuildRegistry(s.MSGFolder, s.language);
+            }
+            else
+            {
+                file.BuildRegistry("", "");
+            }
 
             cbChar.Items.Clear();
-            for (int i = 0; i < css.Count; i++)
-                cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
-
-
+            for (int i = 0; i < file.css.Length; i++)
+                cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
 
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            skill[] pSuper = Super.ToArray();
-            skill[] pUltimate = Ultimate.ToArray();
-            skill[] pEvasive = Evasive.ToArray();
-            skill[] pblast = blast.ToArray();
-            skill[] pAwaken = Awaken.ToArray();
-            charSkillSet[] pcss = css.ToArray(); 
-
-            CUS.Write(FileName, ref pcss, ref pSuper, ref pUltimate, ref pEvasive, ref pAwaken, ref pblast);
+            file.readCUS(FileName);
         }
 
         private void cbChar_SelectedIndexChanged(object sender, EventArgs e)
         {
             lck = false;
-            currentSet = css[cbChar.SelectedIndex];
+            currentSet = file.css[cbChar.SelectedIndex];
             txtCharID.Text = currentSet.charID.ToString();
             txtCostID.Text = currentSet.costumeID.ToString();
-            txtSup1.Text = currentSet.skill[0].ToString();
-            txtSup2.Text = currentSet.skill[1].ToString();
-            txtSup3.Text = currentSet.skill[2].ToString();
-            txtSup4.Text = currentSet.skill[3].ToString();
-            txtUlt1.Text = currentSet.skill[4].ToString();
-            txtUlt2.Text = currentSet.skill[5].ToString();
-            txtEva.Text = currentSet.skill[6].ToString();
-            txtKiB.Text = currentSet.skill[7].ToString();
-            txtAwa.Text = currentSet.skill[8].ToString();
+            
+
+
             txtVal.Text = currentSet.skill[9].ToString();
             lck = true;
         }
@@ -109,14 +82,9 @@ namespace CUSEditor
             {
                 lck = false;
                 currentSet.charID = p;
-                css[cbChar.SelectedIndex] = currentSet;
+                file.css[cbChar.SelectedIndex] = currentSet;
 
-                int temp = cbChar.SelectedIndex;
-                cbChar.SelectedIndex = 0;
-                cbChar.Items.Clear();
-                for (int i = 0; i < css.Count; i++)
-                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
-                cbChar.SelectedIndex = temp;
+                UpdateCharlist();
                 lck = true;
             }
         }
@@ -128,104 +96,36 @@ namespace CUSEditor
             {
                 lck = false;
                 currentSet.costumeID = p;
-                css[cbChar.SelectedIndex] = currentSet;
+                file.css[cbChar.SelectedIndex] = currentSet;
 
-                int temp = cbChar.SelectedIndex;
-                cbChar.SelectedIndex = 0;
-                cbChar.Items.Clear();
-                for (int i = 0; i < css.Count; i++)
-                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
-                cbChar.SelectedIndex = temp;
+                UpdateCharlist();
                 lck = true;
             }
         }
 
-        private void txtSup1_TextChanged(object sender, EventArgs e)
+        private void UpdateCharlist()
         {
-            short p;
-            if (lck && short.TryParse(txtSup1.Text, out p))
-            {
-                currentSet.skill[0] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
+            int temp = cbChar.SelectedIndex;
+            cbChar.SelectedIndex = 0;
+            cbChar.Items.Clear();
+            //if (infoLoaded)
+            //{
+
+            //}
+            //else
+            //{
+                for (int i = 0; i < file.css.Length; i++)
+                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
+            //}
+            cbChar.SelectedIndex = temp;
+
         }
 
-        private void txtSup2_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtSup2.Text, out p))
-            {
-                currentSet.skill[1] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtSup3_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtSup3.Text, out p))
-            {
-                currentSet.skill[2] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtSup4_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtSup4.Text, out p))
-            {
-                currentSet.skill[3] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtUlt1_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtUlt1.Text, out p))
-            {
-                currentSet.skill[4] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtUlt2_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtUlt2.Text, out p))
-            {
-                currentSet.skill[5] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtEva_TextChanged(object sender, EventArgs e)
-        {
-            short p;
-            if (lck && short.TryParse(txtEva.Text, out p))
-            {
-                currentSet.skill[6] = p;
-                css[cbChar.SelectedIndex] = currentSet;
-            }
-        }
-
-        private void txtKiB_TextChanged(object sender, EventArgs e)
-        {
-            currentSet.skill[7] = short.Parse(txtKiB.Text);
-            css[cbChar.SelectedIndex] = currentSet;
-        }
-
-        private void txtAwa_TextChanged(object sender, EventArgs e)
-        {
-            currentSet.skill[8] = short.Parse(txtAwa.Text);
-            css[cbChar.SelectedIndex] = currentSet;
-        }
+        
 
         private void txtVal_TextChanged(object sender, EventArgs e)
         {
-            currentSet.skill[9] = short.Parse(txtVal.Text);
-            css[cbChar.SelectedIndex] = currentSet;
+            file.css[cbChar.SelectedIndex].skill[9] = short.Parse(txtVal.Text); 
         }
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,13 +135,13 @@ namespace CUSEditor
             {
                 case 0:
                     cbSkill.Items.Clear();
-                    for (int i = 0; i < Super.Count; i++)
-                        cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                    for (int i = 0; i < file.Super.Count; i++)
+                        cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                     break;
                 case 1:
                     cbSkill.Items.Clear();
-                    for (int i = 0; i < Ultimate.Count; i++)
-                        cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                    for (int i = 0; i < file.Ultimate.Count; i++)
+                        cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                     break;
                 case 2:
                     cbSkill.Items.Clear();
@@ -268,10 +168,10 @@ namespace CUSEditor
             switch (cbType.SelectedIndex)
             {
                 case 0:
-                    currentSkill = Super[cbSkill.SelectedIndex];
+                    currentSkill = file.Super[cbSkill.SelectedIndex];
                     break;
                 case 1:
-                    currentSkill = Ultimate[cbSkill.SelectedIndex];
+                    currentSkill = file.Ultimate[cbSkill.SelectedIndex];
                     break;
                 case 2:
                     currentSkill = Evasive[cbSkill.SelectedIndex];
@@ -317,10 +217,10 @@ namespace CUSEditor
             switch (cbType.SelectedIndex)
             {
                 case 0:
-                    Super[cbSkill.SelectedIndex] = currentSkill;
+                    file.Super[cbSkill.SelectedIndex] = currentSkill;
                     break;
                 case 1:
-                    Ultimate[cbSkill.SelectedIndex] = currentSkill;
+                    file.Ultimate[cbSkill.SelectedIndex] = currentSkill;
                     break;
                 case 2:
                     Evasive[cbSkill.SelectedIndex] = currentSkill;
@@ -345,13 +245,13 @@ namespace CUSEditor
                 {
                     case 0:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Super.Count; i++)
-                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        for (int i = 0; i < file.Super.Count; i++)
+                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                         break;
                     case 1:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Ultimate.Count; i++)
-                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        for (int i = 0; i < file.Ultimate.Count; i++)
+                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                         break;
                     case 2:
                         cbSkill.Items.Clear();
@@ -387,13 +287,13 @@ namespace CUSEditor
                 {
                     case 0:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Super.Count; i++)
-                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        for (int i = 0; i < file.Super.Count; i++)
+                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                         break;
                     case 1:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Ultimate.Count; i++)
-                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        for (int i = 0; i < file.Ultimate.Count; i++)
+                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                         break;
                     case 2:
                         cbSkill.Items.Clear();
@@ -613,14 +513,14 @@ namespace CUSEditor
             {
                 charSkillSet n = new charSkillSet();
                 n.skill = new short[12];
-                css.Add(n);
+                file.css.Add(n);
 
                 lck = false;
                 int temp = cbChar.SelectedIndex;
                 cbChar.SelectedIndex = 0;
                 cbChar.Items.Clear();
-                for (int i = 0; i < css.Count; i++)
-                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                for (int i = 0; i < file.css.Count; i++)
+                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
                 cbChar.SelectedIndex = temp;
                 lck = true;
             }
@@ -632,10 +532,10 @@ namespace CUSEditor
                 switch (cbType.SelectedIndex)
                 {
                     case 0:
-                        Super.Add(n);
+                        file.Super.Add(n);
                         break;
                     case 1:
-                        Ultimate.Add(n);
+                        file.Ultimate.Add(n);
                         break;
                     case 2:
                         Evasive.Add(n);
@@ -654,13 +554,13 @@ namespace CUSEditor
                 {
                     case 0:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Super.Count; i++)
-                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        for (int i = 0; i < file.Super.Count; i++)
+                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                         break;
                     case 1:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Ultimate.Count; i++)
-                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        for (int i = 0; i < file.Ultimate.Count; i++)
+                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                         break;
                     case 2:
                         cbSkill.Items.Clear();
@@ -689,13 +589,13 @@ namespace CUSEditor
         {
             if (tabControl1.SelectedIndex == 0)
             {
-                css.RemoveAt(cbChar.SelectedIndex);
+                file.css.RemoveAt(cbChar.SelectedIndex);
                 lck = false;
                 int temp = cbChar.SelectedIndex;
                 cbChar.SelectedIndex = 0;
                 cbChar.Items.Clear();
-                for (int i = 0; i < css.Count; i++)
-                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                for (int i = 0; i < file.css.Count; i++)
+                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
                 cbChar.SelectedIndex = temp;
                 lck = true;
             }
@@ -705,10 +605,10 @@ namespace CUSEditor
                 switch (cbType.SelectedIndex)
                 {
                     case 0:
-                        Super.RemoveAt(cbSkill.SelectedIndex);
+                        file.Super.RemoveAt(cbSkill.SelectedIndex);
                         break;
                     case 1:
-                        Ultimate.RemoveAt(cbSkill.SelectedIndex);
+                        file.Ultimate.RemoveAt(cbSkill.SelectedIndex);
                         break;
                     case 2:
                         Evasive.RemoveAt(cbSkill.SelectedIndex);
@@ -727,13 +627,13 @@ namespace CUSEditor
                 {
                     case 0:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Super.Count; i++)
-                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        for (int i = 0; i < file.Super.Count; i++)
+                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                         break;
                     case 1:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Ultimate.Count; i++)
-                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        for (int i = 0; i < file.Ultimate.Count; i++)
+                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                         break;
                     case 2:
                         cbSkill.Items.Clear();
@@ -778,14 +678,14 @@ namespace CUSEditor
             if (tabControl1.SelectedIndex == 0)
             {
                 currentSet = copySet;
-                css[cbChar.SelectedIndex] = currentSet;
+                file.css[cbChar.SelectedIndex] = currentSet;
 
                 lck = false;
                 int temp = cbChar.SelectedIndex;
                 cbChar.SelectedIndex = 0;
                 cbChar.Items.Clear();
-                for (int i = 0; i < css.Count; i++)
-                    cbChar.Items.Add("Character " + css[i].charID.ToString("000") + " - Costume " + css[i].costumeID.ToString("00"));
+                for (int i = 0; i < file.css.Count; i++)
+                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
                 cbChar.SelectedIndex = temp;
                 lck = true;
             }
@@ -801,13 +701,13 @@ namespace CUSEditor
                 {
                     case 0:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Super.Count; i++)
-                            cbSkill.Items.Add(Super[i].id.ToString("000") + " - " + Super[i].shortName);
+                        for (int i = 0; i < file.Super.Count; i++)
+                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
                         break;
                     case 1:
                         cbSkill.Items.Clear();
-                        for (int i = 0; i < Ultimate.Count; i++)
-                            cbSkill.Items.Add(Ultimate[i].id.ToString("000") + " - " + Ultimate[i].shortName);
+                        for (int i = 0; i < file.Ultimate.Count; i++)
+                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
                         break;
                     case 2:
                         cbSkill.Items.Clear();
@@ -832,6 +732,11 @@ namespace CUSEditor
         }
 
         private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label34_Click(object sender, EventArgs e)
         {
 
         }

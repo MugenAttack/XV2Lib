@@ -324,5 +324,18 @@ namespace CMSEditor
                 selective[i] = false;
             }
         }
+
+        private void injectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog browseFile = new OpenFileDialog();
+            browseFile.Filter = "Xenoverse XV2Lib Inject  (*.x2i)|*.x2i";
+            browseFile.Title = "Browse for XV2Lib Inject File";
+
+            
+
+
+
+        }
     }
 }

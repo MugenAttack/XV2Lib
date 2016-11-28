@@ -19,7 +19,7 @@ namespace XV2Lib
                     if (m.NameID == id)
                         return m.Lines[0];
                 }
-                return "No Matching ID";
+                return "";
             }
 
             public string Find(int id)
@@ -29,7 +29,7 @@ namespace XV2Lib
                     if (m.ID == id)
                         return m.Lines[0];
                 }
-                return "No Matching ID";
+                return "";
             }
         }
 

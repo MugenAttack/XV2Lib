@@ -178,5 +178,87 @@ namespace XV2Lib
 
 
         }
+
+        public static void InjectWrite(ref BinaryWriter bw, Char_Model_Spec cms)
+        {
+            List<string> CmnText = new List<string>();
+            
+            for (int j = 0; j < cms.Paths.Length; j++)
+            {
+                if (!CmnText.Contains(cms.Paths[j]))
+                    CmnText.Add(cms.Paths[j]);
+            }
+
+            int[] wordAddress = new int[CmnText.Count];
+            int pos = (int)bw.BaseStream.Position;
+
+            bw.BaseStream.Seek(84, SeekOrigin.Current);
+            for (int i = 0; i < CmnText.Count; i++)
+            {
+                wordAddress[i] = (int)bw.BaseStream.Position;
+                bw.Write(System.Text.Encoding.ASCII.GetBytes(CmnText[i]));
+                bw.Write((byte)0);
+            }
+
+            bw.BaseStream.Seek(pos, SeekOrigin.Begin);
+
+            bw.Write(cms.id);
+            bw.Write(System.Text.Encoding.ASCII.GetBytes(cms.shortname));
+            bw.BaseStream.Seek(9, SeekOrigin.Current);
+            bw.Write(cms.unk1);
+            bw.Write(cms.unk2);
+            bw.Write(cms.unk3);
+            bw.Write(cms.unk4);
+            bw.Write(cms.unk5);
+            bw.BaseStream.Seek(4, SeekOrigin.Current);
+            if (cms.Paths[0] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[0])]);
+
+            if (cms.Paths[1] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[1])]);
+
+            bw.BaseStream.Seek(4, SeekOrigin.Current);
+            if (cms.Paths[2] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[2])]);
+
+            if (cms.Paths[3] == "")//additional
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[3])]);
+
+            bw.BaseStream.Seek(4, SeekOrigin.Current);
+            if (cms.Paths[4] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[4])]);
+
+            if (cms.Paths[5] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[5])]);
+
+            if (cms.Paths[6] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[6])]);
+
+            if (cms.Paths[7] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[7])]);
+
+            bw.BaseStream.Seek(8, SeekOrigin.Current);
+            if (cms.Paths[8] == "")
+                bw.Write((int)0);
+            else
+                bw.Write(wordAddress[CmnText.IndexOf(cms.Paths[8])]);
+
+        }
     }
 }

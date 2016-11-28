@@ -29,12 +29,18 @@ namespace XV2Lib
 
     public class IDB
     {
-        //SchemaBinary schema;
+        public SchemaBinary schema;
         public IDB_Data[] items;
 
         public IDB()
         {
-            //schema.ReadSchema("IDB_Schema.csv");
+           
+        }
+
+        public void SetSchema(string schemaPath)
+        {
+            schema = new SchemaBinary();
+            schema.ReadSchema(schemaPath);
         }
 
         public void Read(string FileName)
@@ -109,6 +115,10 @@ namespace XV2Lib
             }
         }
 
+        public void Sort()
+        {
+
+        }
 
     }
 }

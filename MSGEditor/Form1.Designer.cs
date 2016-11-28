@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cbList = new System.Windows.Forms.ComboBox();
             this.cbLine = new System.Windows.Forms.ComboBox();
             this.txtText = new System.Windows.Forms.TextBox();
@@ -47,6 +48,7 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -101,7 +103,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.searchToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(302, 24);
@@ -127,61 +130,61 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.saveAsToolStripMenuItem.Text = "Save As.....";
             this.saveAsToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(126, 6);
             // 
             // f1
             // 
             this.f1.Name = "f1";
-            this.f1.Size = new System.Drawing.Size(152, 22);
+            this.f1.Size = new System.Drawing.Size(129, 22);
             this.f1.Text = "F1";
             this.f1.Click += new System.EventHandler(this.f1_Click);
             // 
             // f2
             // 
             this.f2.Name = "f2";
-            this.f2.Size = new System.Drawing.Size(152, 22);
+            this.f2.Size = new System.Drawing.Size(129, 22);
             this.f2.Text = "F2";
             this.f2.Click += new System.EventHandler(this.f2_Click);
             // 
             // f3
             // 
             this.f3.Name = "f3";
-            this.f3.Size = new System.Drawing.Size(152, 22);
+            this.f3.Size = new System.Drawing.Size(129, 22);
             this.f3.Text = "F3";
             this.f3.Click += new System.EventHandler(this.f3_Click);
             // 
             // f4
             // 
             this.f4.Name = "f4";
-            this.f4.Size = new System.Drawing.Size(152, 22);
+            this.f4.Size = new System.Drawing.Size(129, 22);
             this.f4.Text = "F4";
             this.f4.Click += new System.EventHandler(this.f4_Click);
             // 
             // f5
             // 
             this.f5.Name = "f5";
-            this.f5.Size = new System.Drawing.Size(152, 22);
+            this.f5.Size = new System.Drawing.Size(129, 22);
             this.f5.Text = "F5";
             this.f5.Click += new System.EventHandler(this.f5_Click);
             // 
@@ -207,6 +210,13 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -249,6 +259,7 @@
             this.Controls.Add(this.cbLine);
             this.Controls.Add(this.cbList);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "MSG Editor";
@@ -261,8 +272,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbList;
         private System.Windows.Forms.ComboBox cbLine;
         private System.Windows.Forms.TextBox txtText;
         private System.Windows.Forms.TextBox txtName;
@@ -284,6 +293,8 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        public System.Windows.Forms.ComboBox cbList;
     }
 }
 
