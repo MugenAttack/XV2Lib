@@ -1,0 +1,12 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.CostumeEditor.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.RaceLock.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.SuperSoul.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.csproj.CoreCompileInputs.cache
+C:\XV2Lib\Release\IDBEditor.exe.config
+C:\XV2Lib\Release\IDBEditor.exe
+C:\XV2Lib\Release\IDBEditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\IDBEditor\obj\Release\IDBEditor.pdb

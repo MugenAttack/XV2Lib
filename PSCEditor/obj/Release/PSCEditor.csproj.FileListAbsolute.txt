@@ -1,0 +1,10 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.csprojResolveAssemblyReference.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.csproj.CoreCompileInputs.cache
+C:\XV2Lib\Release\PSCEditor.exe.config
+C:\XV2Lib\Release\PSCEditor.exe
+C:\XV2Lib\Release\PSCEditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\PSCEditor\obj\Release\PSCEditor.pdb

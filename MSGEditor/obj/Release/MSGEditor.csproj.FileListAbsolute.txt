@@ -1,0 +1,11 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.csprojResolveAssemblyReference.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.Search.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.csproj.CoreCompileInputs.cache
+C:\XV2Lib\Release\MSGEditor.exe.config
+C:\XV2Lib\Release\MSGEditor.exe
+C:\XV2Lib\Release\MSGEditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\MSGEditor\obj\Release\MSGEditor.pdb

@@ -1,0 +1,9 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\bin\Release\Test.exe.config
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\bin\Release\Test.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\bin\Release\Test.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\bin\Release\XV2Lib.dll
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\bin\Release\XV2Lib.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\obj\Release\Test.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\obj\Release\Test.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\Test\obj\Release\Test.csprojResolveAssemblyReference.cache

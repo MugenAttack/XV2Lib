@@ -1,0 +1,10 @@
+C:\XV2Lib\Release\AUREditor.exe.config
+C:\XV2Lib\Release\AUREditor.exe
+C:\XV2Lib\Release\AUREditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.csprojResolveAssemblyReference.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.csproj.CoreCompileInputs.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\AUREditor\obj\Release\AUREditor.pdb

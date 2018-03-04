@@ -153,13 +153,13 @@ namespace XV2Lib
                             return ultimateReg[i].name;
                     }
                     break;
-                case 0:
+                case 2:
                     break;
-                case 0:
+                case 3:
                     break;
-                case 0:
+                case 4:
                     break;
-                case 0:
+                case 5:
                     break;
             }
 
@@ -168,7 +168,7 @@ namespace XV2Lib
 
         public string[] getSkillList(int type)
         {
-
+            return null;
         }
     }
 }

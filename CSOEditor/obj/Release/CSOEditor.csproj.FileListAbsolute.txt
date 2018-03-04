@@ -1,0 +1,10 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.csprojResolveAssemblyReference.cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.csproj.CoreCompileInputs.cache
+C:\XV2Lib\Release\CSOEditor.exe.config
+C:\XV2Lib\Release\CSOEditor.exe
+C:\XV2Lib\Release\CSOEditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\CSOEditor\obj\Release\CSOEditor.pdb

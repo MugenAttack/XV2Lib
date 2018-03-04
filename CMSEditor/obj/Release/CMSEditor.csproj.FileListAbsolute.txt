@@ -1,0 +1,9 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.Form1.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.Properties.Resources.resources
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.csproj.GenerateResource.Cache
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.csproj.CoreCompileInputs.cache
+C:\XV2Lib\Release\CMSEditor.exe.config
+C:\XV2Lib\Release\CMSEditor.exe
+C:\XV2Lib\Release\CMSEditor.pdb
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.exe
+C:\Users\jerem\Documents\GitHub\XV2Lib\CMSEditor\obj\Release\CMSEditor.pdb

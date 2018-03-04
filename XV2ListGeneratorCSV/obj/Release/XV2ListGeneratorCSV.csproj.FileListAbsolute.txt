@@ -1,0 +1,1 @@
+C:\Users\jerem\Documents\GitHub\XV2Lib\XV2ListGeneratorCSV\obj\Release\XV2ListGeneratorCSV.csproj.CoreCompileInputs.cache

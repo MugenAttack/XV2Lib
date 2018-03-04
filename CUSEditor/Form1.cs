@@ -223,13 +223,13 @@ namespace CUSEditor
                     file.Ultimate[cbSkill.SelectedIndex] = currentSkill;
                     break;
                 case 2:
-                    Evasive[cbSkill.SelectedIndex] = currentSkill;
+                    file.Evasive[cbSkill.SelectedIndex] = currentSkill;
                     break;
                 case 3:
-                    blast[cbSkill.SelectedIndex] = currentSkill;
+                    file.blast[cbSkill.SelectedIndex] = currentSkill;
                     break;
                 case 4:
-                    Awaken[cbSkill.SelectedIndex] = currentSkill;
+                    file.Awaken[cbSkill.SelectedIndex] = currentSkill;
                     break;
             }
         }
