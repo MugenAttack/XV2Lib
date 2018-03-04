@@ -1,6 +1,0 @@
-C:\Users\jerem\Documents\GitHub\XV2Lib\AllinShopPatch\obj\Release\AllinShopPatch.csproj.CoreCompileInputs.cache
-C:\XV2Lib\Release\AllinShopPatch.exe.config
-C:\XV2Lib\Release\AllinShopPatch.exe
-C:\XV2Lib\Release\AllinShopPatch.pdb
-C:\Users\jerem\Documents\GitHub\XV2Lib\AllinShopPatch\obj\Release\AllinShopPatch.exe
-C:\Users\jerem\Documents\GitHub\XV2Lib\AllinShopPatch\obj\Release\AllinShopPatch.pdb
