@@ -34,12 +34,7 @@ namespace Settings
 
         private void txtMSG_TextChanged(object sender, EventArgs e)
         {
-            s.MSGFolder = txtMSG.Text;
-        }
-
-        private void txtSys_TextChanged(object sender, EventArgs e)
-        {
-            s.SysFolder = txtSys.Text;
+            s.XENOFolder = txtMSG.Text;
         }
 
         private void cbLang_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,21 +51,16 @@ namespace Settings
         private void btnFMSG_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog browseFolder = new FolderBrowserDialog();
-            browseFolder.Description = "Find Msg Folder";
+            browseFolder.Description = "Find Xenoverse 2 Folder";
             if (browseFolder.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            txtMSG.Text = browseFolder.SelectedPath;
+            txtMSG.Text = browseFolder.SelectedPath + "\\";
         }
 
-        private void btnFSys_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            FolderBrowserDialog browseFolder = new FolderBrowserDialog();
-            browseFolder.Description = "Find System Folder";
-            if (browseFolder.ShowDialog() == DialogResult.Cancel)
-                return;
 
-            txtSys.Text = browseFolder.SelectedPath;
         }
     }
 }

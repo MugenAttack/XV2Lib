@@ -11,8 +11,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            List<OCT_Char> c = OCT.Read("MenuTalismanCustomList.oct");
-            OCT.Write("MenuTalismanCustomList.oct", c);
+            List<ODF_Char> o = ODF.Read("OriginalCharacterDefaultTable.odf");
+            ODF.Write("OriginalCharacterDefaultTable.odf", o);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace XV2Lib
 {
     public class Settings
     {
-        public string language;
-        public string MSGFolder;
-        public string SysFolder;
+        public string language = "en";
+        public string XENOFolder ;
+        
 
         public bool Read()
         {
@@ -29,15 +29,10 @@ namespace XV2Lib
                         case "LANG":
                             language = sep[1];
                             break;
-                        case "MSG":
-                            MSGFolder = sep[1];
-                            break;
-                        case "SYS":
-                            SysFolder = sep[1];
+                        case "XENO":
+                            XENOFolder = sep[1];
                             break;
                     }
-
-
                 }
                 return true;
             }
@@ -49,8 +44,7 @@ namespace XV2Lib
         {
             StreamWriter sw = new StreamWriter(File.Create("Settings.csv"));
             sw.WriteLine("LANG," + language);
-            sw.WriteLine("MSG," + MSGFolder);
-            sw.WriteLine("SYS," + SysFolder);
+            sw.WriteLine("XV2," + XENOFolder);
             sw.Close();
         }
 

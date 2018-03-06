@@ -35,9 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbLang = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnFSys = new System.Windows.Forms.Button();
-            this.txtSys = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -45,9 +42,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "MSG Folder";
+            this.label1.Text = "Xenoverse 2 Folder";
             // 
             // txtMSG
             // 
@@ -70,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 96);
+            this.label2.Location = new System.Drawing.Point(12, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
@@ -89,7 +86,7 @@
             "pl - Polish",
             "pt - portugueese",
             "ru - Russian"});
-            this.cbLang.Location = new System.Drawing.Point(12, 112);
+            this.cbLang.Location = new System.Drawing.Point(12, 70);
             this.cbLang.Name = "cbLang";
             this.cbLang.Size = new System.Drawing.Size(234, 21);
             this.cbLang.TabIndex = 4;
@@ -97,7 +94,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(61, 139);
+            this.button1.Location = new System.Drawing.Point(61, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 23);
             this.button1.TabIndex = 5;
@@ -105,41 +102,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnFSys
-            // 
-            this.btnFSys.Location = new System.Drawing.Point(171, 68);
-            this.btnFSys.Name = "btnFSys";
-            this.btnFSys.Size = new System.Drawing.Size(75, 20);
-            this.btnFSys.TabIndex = 8;
-            this.btnFSys.Text = "Find";
-            this.btnFSys.UseVisualStyleBackColor = true;
-            this.btnFSys.Click += new System.EventHandler(this.btnFSys_Click);
-            // 
-            // txtSys
-            // 
-            this.txtSys.Location = new System.Drawing.Point(15, 68);
-            this.txtSys.Name = "txtSys";
-            this.txtSys.Size = new System.Drawing.Size(150, 20);
-            this.txtSys.TabIndex = 7;
-            this.txtSys.TextChanged += new System.EventHandler(this.txtSys_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "System Folder";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 173);
-            this.Controls.Add(this.btnFSys);
-            this.Controls.Add(this.txtSys);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(260, 128);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbLang);
             this.Controls.Add(this.label2);
@@ -149,6 +116,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,9 +130,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbLang;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnFSys;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSys;
     }
 }
 

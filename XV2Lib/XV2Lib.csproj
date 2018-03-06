@@ -56,6 +56,7 @@
     <Compile Include="OCP.cs" />
     <Compile Include="OCS.cs" />
     <Compile Include="OCT.cs" />
+    <Compile Include="ODF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PSC.cs" />
     <Compile Include="SchemaBinary.cs" />
