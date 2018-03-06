@@ -11,8 +11,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            List<ODF_Char> o = ODF.Read("OriginalCharacterDefaultTable.odf");
-            ODF.Write("OriginalCharacterDefaultTable.odf", o);
+            List<OCO_Char> o = OCO.Read("MenuCostumeCustomList.oco");
+            OCO.Write("MenuCostumeCustomList.oco", o);
         }
     }
 }
