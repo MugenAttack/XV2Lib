@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartnerTool", "PartnerTool\
 		{5039F384-DB97-42FB-A2C4-BA2F473AA72E} = {5039F384-DB97-42FB-A2C4-BA2F473AA72E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectScreenEditor", "SelectScreenEditor\SelectScreenEditor.csproj", "{BCBD0AF4-C7F8-4A7A-8EBE-333940603D0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{0B5801D4-5841-47BA-858C-EA800B356F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B5801D4-5841-47BA-858C-EA800B356F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B5801D4-5841-47BA-858C-EA800B356F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBD0AF4-C7F8-4A7A-8EBE-333940603D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBD0AF4-C7F8-4A7A-8EBE-333940603D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBD0AF4-C7F8-4A7A-8EBE-333940603D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBD0AF4-C7F8-4A7A-8EBE-333940603D0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

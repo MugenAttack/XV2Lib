@@ -46,6 +46,7 @@
     <Compile Include="CMS.cs" />
     <Compile Include="CMSRegistry.cs" />
     <Compile Include="CSO.cs" />
+    <Compile Include="CST.cs" />
     <Compile Include="CUS.cs" />
     <Compile Include="CUSRegistry.cs" />
     <Compile Include="Helper.cs" />

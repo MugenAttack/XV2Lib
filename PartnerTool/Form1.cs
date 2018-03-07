@@ -34,7 +34,9 @@ namespace PartnerTool
         List<Partner_Data> partners;
         Partner_Data currentPartner;
         OCC_ColorParts currentCPart;
-        bool disableChange = false;
+        OCS_Skill currentSkill;
+        OCP_Parameters currentParam;
+        OCT_Talisman currentSS;
         string PartnerFolder;
         public Form1()
         {
@@ -126,6 +128,39 @@ namespace PartnerTool
                 txtCostume4.Text = currentPartner.costume.unk4.ToString();
                 txtCostume5.Text = currentPartner.costume.unk5.ToString();
                 chkEnable.Checked = currentPartner.CostumeEnabled;
+
+                //Skills
+                cbType.SelectedIndex = -1;
+                cbSkill.SelectedIndex = -1;
+                cbSkill.Items.Clear();
+                txtSkill1.Text = "";
+                txtSkill2.Text = "";
+                txtSkill3.Text = "";
+                txtSkill4.Text = "";
+                txtSkill5.Text = "";
+                txtSkill6.Text = "";
+
+                //Parameters
+                cbParam.SelectedIndex = -1;
+                cbParam.Items.Clear();
+                for (int i = 0; i < currentPartner.parameters.Count; i++)
+                    cbParam.Items.Add(i);
+                txtParam1.Text = "";
+                txtParam2.Text = "";
+                txtParam3.Text = "";
+                txtParam4.Text = "";
+                txtParam5.Text = "";
+
+                //Super Soul
+                cbSuperSoul.SelectedIndex = -1;
+                cbSuperSoul.Items.Clear();
+                for (int i = 0; i < currentPartner.talisman.Count; i++)
+                    cbSuperSoul.Items.Add(i);
+                txtSS1.Text = "";
+                txtSS2.Text = "";
+                txtSS3.Text = "";
+                txtSS4.Text = "";
+                txtSS5.Text = "";
             }
         }
 
@@ -478,6 +513,362 @@ namespace PartnerTool
             if (cbPartners.SelectedIndex >= 0 )
             {
                 currentPartner.CostumeEnabled = chkEnable.Checked;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void cbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPartners.SelectedIndex >= 0)
+            {
+                cbSkill.SelectedIndex = -1;
+                cbSkill.Items.Clear();
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        for (int i = 0; i < currentPartner.type0.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 1:
+                        for (int i = 0; i < currentPartner.type1.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 2:
+                        for (int i = 0; i < currentPartner.type2.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 3:
+                        for (int i = 0; i < currentPartner.type3.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                }
+
+                txtSkill1.Text = "";
+                txtSkill2.Text = "";
+                txtSkill3.Text = "";
+                txtSkill4.Text = "";
+                txtSkill5.Text = "";
+                txtSkill6.Text = "";
+            }
+        }
+
+        private void cbSkill_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSkill.SelectedIndex >= 0)
+            {
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentSkill = currentPartner.type0[cbSkill.SelectedIndex];
+                        break;
+                    case 1:
+                        currentSkill = currentPartner.type1[cbSkill.SelectedIndex];
+                        break;
+                    case 2:
+                        currentSkill = currentPartner.type2[cbSkill.SelectedIndex];
+                        break;
+                    case 3:
+                        currentSkill = currentPartner.type3[cbSkill.SelectedIndex];
+                        break;
+                }
+
+                txtSkill1.Text = currentSkill.unk1.ToString();
+                txtSkill2.Text = currentSkill.unk2.ToString();
+                txtSkill3.Text = currentSkill.unk3.ToString();
+                txtSkill4.Text = currentSkill.unk4.ToString();
+                txtSkill5.Text = currentSkill.unk5.ToString();
+                txtSkill6.Text = currentSkill.unk6.ToString();
+            }
+        }
+
+        private void txtSkill1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill1.Text,out p))
+            {
+                currentSkill.unk1 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSkill2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill2.Text, out p))
+            {
+                currentSkill.unk2 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSkill3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill3.Text, out p))
+            {
+                currentSkill.unk3 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSkill4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill4.Text, out p))
+            {
+                currentSkill.unk4 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSkill5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill5.Text, out p))
+            {
+                currentSkill.unk5 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSkill6_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSkill.SelectedIndex >= 0 && int.TryParse(txtSkill6.Text, out p))
+            {
+                currentSkill.unk6 = p;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 1:
+                        currentPartner.type1[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 2:
+                        currentPartner.type2[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                    case 3:
+                        currentPartner.type3[cbSkill.SelectedIndex] = currentSkill;
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void cbParam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (partners.Count > 0 && cbParam.SelectedIndex >= 0)
+            {
+                currentParam = currentPartner.parameters[cbParam.SelectedIndex];
+                txtParam1.Text = currentParam.unk1.ToString();
+                txtParam2.Text = currentParam.unk2.ToString();
+                txtParam3.Text = currentParam.unk3.ToString();
+                txtParam4.Text = currentParam.unk4.ToString();
+                txtParam5.Text = currentParam.unk5.ToString();
+            }
+        }
+
+        private void txtParam1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbParam.SelectedIndex >= 0 && int.TryParse(txtParam1.Text, out p))
+            {
+                currentParam.unk1 = p;
+                currentPartner.parameters[cbParam.SelectedIndex] = currentParam;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtParam2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbParam.SelectedIndex >= 0 && int.TryParse(txtParam2.Text, out p))
+            {
+                currentParam.unk2 = p;
+                currentPartner.parameters[cbParam.SelectedIndex] = currentParam;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtParam3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbParam.SelectedIndex >= 0 && int.TryParse(txtParam3.Text, out p))
+            {
+                currentParam.unk3 = p;
+                currentPartner.parameters[cbParam.SelectedIndex] = currentParam;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtParam4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbParam.SelectedIndex >= 0 && int.TryParse(txtParam4.Text, out p))
+            {
+                currentParam.unk4 = p;
+                currentPartner.parameters[cbParam.SelectedIndex] = currentParam;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtParam5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbParam.SelectedIndex >= 0 && int.TryParse(txtParam5.Text, out p))
+            {
+                currentParam.unk5 = p;
+                currentPartner.parameters[cbParam.SelectedIndex] = currentParam;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void cbSuperSoul_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (partners.Count > 0 && cbSuperSoul.SelectedIndex >= 0)
+            {
+                currentSS = currentPartner.talisman[cbSuperSoul.SelectedIndex];
+                txtSS1.Text = currentSS.unk1.ToString();
+                txtSS2.Text = currentSS.unk2.ToString();
+                txtSS3.Text = currentSS.unk3.ToString();
+                txtSS4.Text = currentSS.unk4.ToString();
+                txtSS5.Text = currentSS.unk5.ToString();
+            }
+        }
+
+        private void txtSS1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSuperSoul.SelectedIndex >= 0 && int.TryParse(txtSS1.Text, out p))
+            {
+                currentSS.unk1 = p;
+                currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSS2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSuperSoul.SelectedIndex >= 0 && int.TryParse(txtSS2.Text, out p))
+            {
+                currentSS.unk2 = p;
+                currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSS3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSuperSoul.SelectedIndex >= 0 && int.TryParse(txtSS3.Text, out p))
+            {
+                currentSS.unk3 = p;
+                currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSS4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSuperSoul.SelectedIndex >= 0 && int.TryParse(txtSS4.Text, out p))
+            {
+                currentSS.unk4 = p;
+                currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtSS5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbSuperSoul.SelectedIndex >= 0 && int.TryParse(txtSS5.Text, out p))
+            {
+                currentSS.unk5 = p;
+                currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
                 partners[cbPartners.SelectedIndex] = currentPartner;
             }
         }

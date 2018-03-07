@@ -93,47 +93,43 @@
             this.txtCostume1 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.cbSkill = new System.Windows.Forms.ComboBox();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.txtSkill4 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txtSkill6 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.txtSkill5 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.txtSkill3 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.txtSkill2 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.txtSkill1 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.cbParam = new System.Windows.Forms.ComboBox();
+            this.txtParam4 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.txtParam5 = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.txtParam3 = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.txtParam2 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.txtParam1 = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
+            this.cbSuperSoul = new System.Windows.Forms.ComboBox();
+            this.txtSS4 = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.txtSS5 = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.txtSS3 = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.txtSS2 = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.txtSS1 = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -747,23 +743,19 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage3.Controls.Add(this.comboBox2);
-            this.tabPage3.Controls.Add(this.comboBox1);
-            this.tabPage3.Controls.Add(this.textBox14);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.textBox15);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.textBox16);
+            this.tabPage3.Controls.Add(this.cbSkill);
+            this.tabPage3.Controls.Add(this.cbType);
+            this.tabPage3.Controls.Add(this.txtSkill4);
             this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.textBox17);
+            this.tabPage3.Controls.Add(this.txtSkill6);
             this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.textBox18);
+            this.tabPage3.Controls.Add(this.txtSkill5);
             this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Controls.Add(this.textBox19);
+            this.tabPage3.Controls.Add(this.txtSkill3);
             this.tabPage3.Controls.Add(this.label19);
-            this.tabPage3.Controls.Add(this.textBox20);
+            this.tabPage3.Controls.Add(this.txtSkill2);
             this.tabPage3.Controls.Add(this.label20);
-            this.tabPage3.Controls.Add(this.textBox21);
+            this.tabPage3.Controls.Add(this.txtSkill1);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
@@ -772,60 +764,36 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Skills";
             // 
-            // comboBox2
+            // cbSkill
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(138, 15);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 41;
+            this.cbSkill.FormattingEnabled = true;
+            this.cbSkill.Location = new System.Drawing.Point(138, 15);
+            this.cbSkill.Name = "cbSkill";
+            this.cbSkill.Size = new System.Drawing.Size(121, 21);
+            this.cbSkill.TabIndex = 41;
+            this.cbSkill.SelectedIndexChanged += new System.EventHandler(this.cbSkill_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cbType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(11, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 40;
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Items.AddRange(new object[] {
+            "Type0",
+            "Type1",
+            "Type2",
+            "Type3"});
+            this.cbType.Location = new System.Drawing.Point(11, 15);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(121, 21);
+            this.cbType.TabIndex = 40;
+            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
             // 
-            // textBox14
+            // txtSkill4
             // 
-            this.textBox14.Location = new System.Drawing.Point(329, 119);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 39;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(332, 103);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(31, 13);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "unk8";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(223, 119);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 20);
-            this.textBox15.TabIndex = 37;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(226, 103);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(31, 13);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "unk7";
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(329, 70);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 20);
-            this.textBox16.TabIndex = 35;
+            this.txtSkill4.Location = new System.Drawing.Point(329, 70);
+            this.txtSkill4.Name = "txtSkill4";
+            this.txtSkill4.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill4.TabIndex = 35;
+            this.txtSkill4.TextChanged += new System.EventHandler(this.txtSkill4_TextChanged);
             // 
             // label16
             // 
@@ -836,12 +804,13 @@
             this.label16.TabIndex = 34;
             this.label16.Text = "unk4";
             // 
-            // textBox17
+            // txtSkill6
             // 
-            this.textBox17.Location = new System.Drawing.Point(117, 119);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 20);
-            this.textBox17.TabIndex = 33;
+            this.txtSkill6.Location = new System.Drawing.Point(117, 119);
+            this.txtSkill6.Name = "txtSkill6";
+            this.txtSkill6.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill6.TabIndex = 33;
+            this.txtSkill6.TextChanged += new System.EventHandler(this.txtSkill6_TextChanged);
             // 
             // label17
             // 
@@ -852,12 +821,13 @@
             this.label17.TabIndex = 32;
             this.label17.Text = "unk6";
             // 
-            // textBox18
+            // txtSkill5
             // 
-            this.textBox18.Location = new System.Drawing.Point(11, 119);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(100, 20);
-            this.textBox18.TabIndex = 31;
+            this.txtSkill5.Location = new System.Drawing.Point(11, 119);
+            this.txtSkill5.Name = "txtSkill5";
+            this.txtSkill5.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill5.TabIndex = 31;
+            this.txtSkill5.TextChanged += new System.EventHandler(this.txtSkill5_TextChanged);
             // 
             // label18
             // 
@@ -868,12 +838,13 @@
             this.label18.TabIndex = 30;
             this.label18.Text = "unk5";
             // 
-            // textBox19
+            // txtSkill3
             // 
-            this.textBox19.Location = new System.Drawing.Point(223, 70);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(100, 20);
-            this.textBox19.TabIndex = 29;
+            this.txtSkill3.Location = new System.Drawing.Point(223, 70);
+            this.txtSkill3.Name = "txtSkill3";
+            this.txtSkill3.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill3.TabIndex = 29;
+            this.txtSkill3.TextChanged += new System.EventHandler(this.txtSkill3_TextChanged);
             // 
             // label19
             // 
@@ -884,12 +855,13 @@
             this.label19.TabIndex = 28;
             this.label19.Text = "unk3";
             // 
-            // textBox20
+            // txtSkill2
             // 
-            this.textBox20.Location = new System.Drawing.Point(117, 70);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(100, 20);
-            this.textBox20.TabIndex = 27;
+            this.txtSkill2.Location = new System.Drawing.Point(117, 70);
+            this.txtSkill2.Name = "txtSkill2";
+            this.txtSkill2.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill2.TabIndex = 27;
+            this.txtSkill2.TextChanged += new System.EventHandler(this.txtSkill2_TextChanged);
             // 
             // label20
             // 
@@ -900,12 +872,13 @@
             this.label20.TabIndex = 26;
             this.label20.Text = "unk2";
             // 
-            // textBox21
+            // txtSkill1
             // 
-            this.textBox21.Location = new System.Drawing.Point(11, 70);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(100, 20);
-            this.textBox21.TabIndex = 25;
+            this.txtSkill1.Location = new System.Drawing.Point(11, 70);
+            this.txtSkill1.Name = "txtSkill1";
+            this.txtSkill1.Size = new System.Drawing.Size(100, 20);
+            this.txtSkill1.TabIndex = 25;
+            this.txtSkill1.TextChanged += new System.EventHandler(this.txtSkill1_TextChanged);
             // 
             // label21
             // 
@@ -919,16 +892,16 @@
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage6.Controls.Add(this.comboBox4);
-            this.tabPage6.Controls.Add(this.textBox32);
+            this.tabPage6.Controls.Add(this.cbParam);
+            this.tabPage6.Controls.Add(this.txtParam4);
             this.tabPage6.Controls.Add(this.label32);
-            this.tabPage6.Controls.Add(this.textBox33);
+            this.tabPage6.Controls.Add(this.txtParam5);
             this.tabPage6.Controls.Add(this.label33);
-            this.tabPage6.Controls.Add(this.textBox34);
+            this.tabPage6.Controls.Add(this.txtParam3);
             this.tabPage6.Controls.Add(this.label34);
-            this.tabPage6.Controls.Add(this.textBox35);
+            this.tabPage6.Controls.Add(this.txtParam2);
             this.tabPage6.Controls.Add(this.label35);
-            this.tabPage6.Controls.Add(this.textBox36);
+            this.tabPage6.Controls.Add(this.txtParam1);
             this.tabPage6.Controls.Add(this.label36);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
@@ -936,20 +909,22 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Parameters";
             // 
-            // comboBox4
+            // cbParam
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(11, 13);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 48;
+            this.cbParam.FormattingEnabled = true;
+            this.cbParam.Location = new System.Drawing.Point(11, 13);
+            this.cbParam.Name = "cbParam";
+            this.cbParam.Size = new System.Drawing.Size(121, 21);
+            this.cbParam.TabIndex = 48;
+            this.cbParam.SelectedIndexChanged += new System.EventHandler(this.cbParam_SelectedIndexChanged);
             // 
-            // textBox32
+            // txtParam4
             // 
-            this.textBox32.Location = new System.Drawing.Point(329, 64);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(100, 20);
-            this.textBox32.TabIndex = 47;
+            this.txtParam4.Location = new System.Drawing.Point(329, 64);
+            this.txtParam4.Name = "txtParam4";
+            this.txtParam4.Size = new System.Drawing.Size(100, 20);
+            this.txtParam4.TabIndex = 47;
+            this.txtParam4.TextChanged += new System.EventHandler(this.txtParam4_TextChanged);
             // 
             // label32
             // 
@@ -960,12 +935,13 @@
             this.label32.TabIndex = 46;
             this.label32.Text = "unk4";
             // 
-            // textBox33
+            // txtParam5
             // 
-            this.textBox33.Location = new System.Drawing.Point(11, 113);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(100, 20);
-            this.textBox33.TabIndex = 45;
+            this.txtParam5.Location = new System.Drawing.Point(11, 113);
+            this.txtParam5.Name = "txtParam5";
+            this.txtParam5.Size = new System.Drawing.Size(100, 20);
+            this.txtParam5.TabIndex = 45;
+            this.txtParam5.TextChanged += new System.EventHandler(this.txtParam5_TextChanged);
             // 
             // label33
             // 
@@ -976,12 +952,13 @@
             this.label33.TabIndex = 44;
             this.label33.Text = "unk5";
             // 
-            // textBox34
+            // txtParam3
             // 
-            this.textBox34.Location = new System.Drawing.Point(223, 64);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(100, 20);
-            this.textBox34.TabIndex = 43;
+            this.txtParam3.Location = new System.Drawing.Point(223, 64);
+            this.txtParam3.Name = "txtParam3";
+            this.txtParam3.Size = new System.Drawing.Size(100, 20);
+            this.txtParam3.TabIndex = 43;
+            this.txtParam3.TextChanged += new System.EventHandler(this.txtParam3_TextChanged);
             // 
             // label34
             // 
@@ -992,12 +969,13 @@
             this.label34.TabIndex = 42;
             this.label34.Text = "unk3";
             // 
-            // textBox35
+            // txtParam2
             // 
-            this.textBox35.Location = new System.Drawing.Point(117, 64);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(100, 20);
-            this.textBox35.TabIndex = 41;
+            this.txtParam2.Location = new System.Drawing.Point(117, 64);
+            this.txtParam2.Name = "txtParam2";
+            this.txtParam2.Size = new System.Drawing.Size(100, 20);
+            this.txtParam2.TabIndex = 41;
+            this.txtParam2.TextChanged += new System.EventHandler(this.txtParam2_TextChanged);
             // 
             // label35
             // 
@@ -1008,12 +986,13 @@
             this.label35.TabIndex = 40;
             this.label35.Text = "unk2";
             // 
-            // textBox36
+            // txtParam1
             // 
-            this.textBox36.Location = new System.Drawing.Point(11, 64);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(100, 20);
-            this.textBox36.TabIndex = 39;
+            this.txtParam1.Location = new System.Drawing.Point(11, 64);
+            this.txtParam1.Name = "txtParam1";
+            this.txtParam1.Size = new System.Drawing.Size(100, 20);
+            this.txtParam1.TabIndex = 39;
+            this.txtParam1.TextChanged += new System.EventHandler(this.txtParam1_TextChanged);
             // 
             // label36
             // 
@@ -1027,16 +1006,16 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.comboBox5);
-            this.tabPage1.Controls.Add(this.textBox37);
+            this.tabPage1.Controls.Add(this.cbSuperSoul);
+            this.tabPage1.Controls.Add(this.txtSS4);
             this.tabPage1.Controls.Add(this.label37);
-            this.tabPage1.Controls.Add(this.textBox39);
+            this.tabPage1.Controls.Add(this.txtSS5);
             this.tabPage1.Controls.Add(this.label39);
-            this.tabPage1.Controls.Add(this.textBox40);
+            this.tabPage1.Controls.Add(this.txtSS3);
             this.tabPage1.Controls.Add(this.label40);
-            this.tabPage1.Controls.Add(this.textBox41);
+            this.tabPage1.Controls.Add(this.txtSS2);
             this.tabPage1.Controls.Add(this.label41);
-            this.tabPage1.Controls.Add(this.textBox42);
+            this.tabPage1.Controls.Add(this.txtSS1);
             this.tabPage1.Controls.Add(this.label42);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -1045,20 +1024,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Super Souls";
             // 
-            // comboBox5
+            // cbSuperSoul
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(11, 16);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 41;
+            this.cbSuperSoul.FormattingEnabled = true;
+            this.cbSuperSoul.Location = new System.Drawing.Point(11, 16);
+            this.cbSuperSoul.Name = "cbSuperSoul";
+            this.cbSuperSoul.Size = new System.Drawing.Size(121, 21);
+            this.cbSuperSoul.TabIndex = 41;
+            this.cbSuperSoul.SelectedIndexChanged += new System.EventHandler(this.cbSuperSoul_SelectedIndexChanged);
             // 
-            // textBox37
+            // txtSS4
             // 
-            this.textBox37.Location = new System.Drawing.Point(329, 65);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(100, 20);
-            this.textBox37.TabIndex = 37;
+            this.txtSS4.Location = new System.Drawing.Point(329, 65);
+            this.txtSS4.Name = "txtSS4";
+            this.txtSS4.Size = new System.Drawing.Size(100, 20);
+            this.txtSS4.TabIndex = 37;
+            this.txtSS4.TextChanged += new System.EventHandler(this.txtSS4_TextChanged);
             // 
             // label37
             // 
@@ -1069,12 +1050,13 @@
             this.label37.TabIndex = 36;
             this.label37.Text = "unk4";
             // 
-            // textBox39
+            // txtSS5
             // 
-            this.textBox39.Location = new System.Drawing.Point(11, 114);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(100, 20);
-            this.textBox39.TabIndex = 33;
+            this.txtSS5.Location = new System.Drawing.Point(11, 114);
+            this.txtSS5.Name = "txtSS5";
+            this.txtSS5.Size = new System.Drawing.Size(100, 20);
+            this.txtSS5.TabIndex = 33;
+            this.txtSS5.TextChanged += new System.EventHandler(this.txtSS5_TextChanged);
             // 
             // label39
             // 
@@ -1085,12 +1067,13 @@
             this.label39.TabIndex = 32;
             this.label39.Text = "unk5";
             // 
-            // textBox40
+            // txtSS3
             // 
-            this.textBox40.Location = new System.Drawing.Point(223, 65);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(100, 20);
-            this.textBox40.TabIndex = 31;
+            this.txtSS3.Location = new System.Drawing.Point(223, 65);
+            this.txtSS3.Name = "txtSS3";
+            this.txtSS3.Size = new System.Drawing.Size(100, 20);
+            this.txtSS3.TabIndex = 31;
+            this.txtSS3.TextChanged += new System.EventHandler(this.txtSS3_TextChanged);
             // 
             // label40
             // 
@@ -1101,12 +1084,13 @@
             this.label40.TabIndex = 30;
             this.label40.Text = "unk3";
             // 
-            // textBox41
+            // txtSS2
             // 
-            this.textBox41.Location = new System.Drawing.Point(117, 65);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(100, 20);
-            this.textBox41.TabIndex = 29;
+            this.txtSS2.Location = new System.Drawing.Point(117, 65);
+            this.txtSS2.Name = "txtSS2";
+            this.txtSS2.Size = new System.Drawing.Size(100, 20);
+            this.txtSS2.TabIndex = 29;
+            this.txtSS2.TextChanged += new System.EventHandler(this.txtSS2_TextChanged);
             // 
             // label41
             // 
@@ -1117,12 +1101,13 @@
             this.label41.TabIndex = 28;
             this.label41.Text = "unk2";
             // 
-            // textBox42
+            // txtSS1
             // 
-            this.textBox42.Location = new System.Drawing.Point(11, 65);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(100, 20);
-            this.textBox42.TabIndex = 27;
+            this.txtSS1.Location = new System.Drawing.Point(11, 65);
+            this.txtSS1.Name = "txtSS1";
+            this.txtSS1.Size = new System.Drawing.Size(100, 20);
+            this.txtSS1.TabIndex = 27;
+            this.txtSS1.TextChanged += new System.EventHandler(this.txtSS1_TextChanged);
             // 
             // label42
             // 
@@ -1207,21 +1192,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtChar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox txtSkill4;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox txtSkill6;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox txtSkill5;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox txtSkill3;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox txtSkill2;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox txtSkill1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtPrtColor4;
         private System.Windows.Forms.Label label24;
@@ -1233,16 +1214,16 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtPrtColor1;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox37;
+        private System.Windows.Forms.ComboBox cbType;
+        private System.Windows.Forms.TextBox txtSS4;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.TextBox txtSS5;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.TextBox txtSS3;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.TextBox textBox41;
+        private System.Windows.Forms.TextBox txtSS2;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.TextBox txtSS1;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox txtID;
@@ -1263,20 +1244,20 @@
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox32;
+        private System.Windows.Forms.TextBox txtParam4;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox txtParam5;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.TextBox txtParam3;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox txtParam2;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.TextBox txtParam1;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.ComboBox cbPartColors;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cbSkill;
+        private System.Windows.Forms.ComboBox cbParam;
+        private System.Windows.Forms.ComboBox cbSuperSoul;
     }
 }
 
