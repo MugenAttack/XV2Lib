@@ -33,6 +33,7 @@ namespace PartnerTool
         Settings s = new Settings();
         List<Partner_Data> partners;
         Partner_Data currentPartner;
+        OCC_ColorParts currentCPart;
         bool disableChange = false;
         string PartnerFolder;
         public Form1()
@@ -89,6 +90,42 @@ namespace PartnerTool
             if (partners.Count > 0)
             {
                 currentPartner = partners[cbPartners.SelectedIndex];
+
+                //Character Tab
+                txtID.Text = currentPartner.id.ToString();
+                txtChar1.Text = currentPartner.character.unk1.ToString();
+                txtChar2.Text = currentPartner.character.unk2.ToString();
+                txtChar3.Text = currentPartner.character.unk3.ToString();
+                txtChar4.Text = currentPartner.character.unk4.ToString();
+                txtChar5.Text = currentPartner.character.unk5.ToString();
+                txtChar6.Text = currentPartner.character.unk6.ToString();
+                txtChar7.Text = currentPartner.character.unk7.ToString();
+                txtChar8.Text = currentPartner.character.unk8.ToString();
+                txtChar9.Text = currentPartner.character.unk9.ToString();
+                txtChar10.Text = currentPartner.character.unk10.ToString();
+                txtChar11.Text = currentPartner.character.unk11.ToString();
+                txtChar12.Text = currentPartner.character.unk12.ToString();
+                txtChar13.Text = currentPartner.character.unk13.ToString();
+
+                //Part Colors Tab
+                cbPartColors.SelectedIndex = -1;
+                cbPartColors.Items.Clear();
+                for (int i = 0; i < currentPartner.color.Count; i++)
+                    cbPartColors.Items.Add(i);
+
+                txtPrtColor1.Text = "";
+                txtPrtColor2.Text = "";
+                txtPrtColor3.Text = "";
+                txtPrtColor4.Text = "";
+                txtPrtColor5.Text = "";
+
+                //Custom Costume
+                txtCostume1.Text = currentPartner.costume.unk1.ToString();
+                txtCostume2.Text = currentPartner.costume.unk2.ToString();
+                txtCostume3.Text = currentPartner.costume.unk3.ToString();
+                txtCostume4.Text = currentPartner.costume.unk4.ToString();
+                txtCostume5.Text = currentPartner.costume.unk5.ToString();
+                chkEnable.Checked = currentPartner.CostumeEnabled;
             }
         }
 
@@ -186,6 +223,263 @@ namespace PartnerTool
             OCP.Write(PartnerFolder + "MenuParamaterCustomList.ocp",Parameters);
             OCT.Write(PartnerFolder + "MenuTalismanCustomList.oct", Talismans);
 
+        }
+
+        private void txtChar1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar1.Text,out p))
+            {
+                currentPartner.character.unk1 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar2.Text, out p))
+            {
+                currentPartner.character.unk2 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar3.Text, out p))
+            {
+                currentPartner.character.unk3 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar4.Text, out p))
+            {
+                currentPartner.character.unk4 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar5.Text, out p))
+            {
+                currentPartner.character.unk5 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar6_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar6.Text, out p))
+            {
+                currentPartner.character.unk6 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar7_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar7.Text, out p))
+            {
+                currentPartner.character.unk7 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar8_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar8.Text, out p))
+            {
+                currentPartner.character.unk8 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar9_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar9.Text, out p))
+            {
+                currentPartner.character.unk9 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar10_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar10.Text, out p))
+            {
+                currentPartner.character.unk10 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar11_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar11.Text, out p))
+            {
+                currentPartner.character.unk11 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar12_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar12.Text, out p))
+            {
+                currentPartner.character.unk12 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtChar13_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtChar13.Text, out p))
+            {
+                currentPartner.character.unk13 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void cbPartColors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (partners.Count > 0 && cbPartColors.SelectedIndex >= 0)
+            {
+                currentCPart = currentPartner.color[cbPartColors.SelectedIndex];
+                txtPrtColor1.Text = currentCPart.unk1.ToString();
+                txtPrtColor2.Text = currentCPart.unk2.ToString();
+                txtPrtColor3.Text = currentCPart.unk3.ToString();
+                txtPrtColor4.Text = currentCPart.unk4.ToString();
+                txtPrtColor5.Text = currentCPart.unk5.ToString();
+            }
+        }
+
+        private void txtPrtColor1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartColors.SelectedIndex >= 0 && int.TryParse(txtPrtColor1.Text, out p))
+            {
+                currentCPart.unk1 = p;
+                currentPartner.color[cbPartColors.SelectedIndex] = currentCPart;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtPrtColor2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartColors.SelectedIndex >= 0 && int.TryParse(txtPrtColor2.Text, out p))
+            {
+                currentCPart.unk2 = p;
+                currentPartner.color[cbPartColors.SelectedIndex] = currentCPart;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtPrtColor3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartColors.SelectedIndex >= 0 && int.TryParse(txtPrtColor3.Text, out p))
+            {
+                currentCPart.unk3 = p;
+                currentPartner.color[cbPartColors.SelectedIndex] = currentCPart;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtPrtColor4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartColors.SelectedIndex >= 0 && int.TryParse(txtPrtColor4.Text, out p))
+            {
+                currentCPart.unk4 = p;
+                currentPartner.color[cbPartColors.SelectedIndex] = currentCPart;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtPrtColor5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartColors.SelectedIndex >= 0 && int.TryParse(txtPrtColor5.Text, out p))
+            {
+                currentCPart.unk5 = p;
+                currentPartner.color[cbPartColors.SelectedIndex] = currentCPart;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtCostume1_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtCostume1.Text, out p))
+            {
+                currentPartner.costume.unk1 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtCostume2_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtCostume2.Text, out p))
+            {
+                currentPartner.costume.unk2 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtCostume3_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtCostume3.Text, out p))
+            {
+                currentPartner.costume.unk3 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtCostume4_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtCostume4.Text, out p))
+            {
+                currentPartner.costume.unk4 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void txtCostume5_TextChanged(object sender, EventArgs e)
+        {
+            int p;
+            if (cbPartners.SelectedIndex >= 0 && int.TryParse(txtCostume5.Text, out p))
+            {
+                currentPartner.costume.unk5 = p;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void chkEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPartners.SelectedIndex >= 0 )
+            {
+                currentPartner.CostumeEnabled = chkEnable.Checked;
+                partners[cbPartners.SelectedIndex] = currentPartner;
+            }
         }
     }
 }
