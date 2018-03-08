@@ -131,6 +131,13 @@
             this.label41 = new System.Windows.Forms.Label();
             this.txtSS1 = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unlockAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPartnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePartnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -145,7 +152,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(441, 24);
@@ -299,9 +307,9 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(15, 162);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 13);
+            this.label13.Size = new System.Drawing.Size(33, 13);
             this.label13.TabIndex = 24;
-            this.label13.Text = "unk13";
+            this.label13.Text = "Order";
             // 
             // txtChar8
             // 
@@ -619,9 +627,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(14, 51);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(31, 13);
+            this.label29.Size = new System.Drawing.Size(55, 13);
             this.label29.TabIndex = 24;
-            this.label29.Text = "unk1";
+            this.label29.Text = "Partner ID";
             // 
             // tabPage5
             // 
@@ -736,9 +744,9 @@
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(14, 17);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(31, 13);
+            this.label31.Size = new System.Drawing.Size(55, 13);
             this.label31.TabIndex = 38;
-            this.label31.Text = "unk1";
+            this.label31.Text = "Partner ID";
             // 
             // tabPage3
             // 
@@ -780,7 +788,7 @@
             "Type0",
             "Type1",
             "Type2",
-            "Type3"});
+            "Awaken"});
             this.cbType.Location = new System.Drawing.Point(11, 15);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(121, 21);
@@ -800,9 +808,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(332, 54);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 13);
+            this.label16.Size = new System.Drawing.Size(54, 13);
             this.label16.TabIndex = 34;
-            this.label16.Text = "unk4";
+            this.label16.Text = "Price (TP)";
             // 
             // txtSkill6
             // 
@@ -817,9 +825,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(120, 103);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(31, 13);
+            this.label17.Size = new System.Drawing.Size(40, 13);
             this.label17.TabIndex = 32;
-            this.label17.Text = "unk6";
+            this.label17.Text = "Skill ID";
             // 
             // txtSkill5
             // 
@@ -834,9 +842,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(14, 103);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(31, 13);
+            this.label18.Size = new System.Drawing.Size(53, 13);
             this.label18.TabIndex = 30;
-            this.label18.Text = "unk5";
+            this.label18.Text = "Skill Type";
             // 
             // txtSkill3
             // 
@@ -851,9 +859,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(226, 54);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 13);
+            this.label19.Size = new System.Drawing.Size(45, 13);
             this.label19.TabIndex = 28;
-            this.label19.Text = "unk3";
+            this.label19.Text = "Lock ID";
             // 
             // txtSkill2
             // 
@@ -868,9 +876,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(120, 54);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(31, 13);
+            this.label20.Size = new System.Drawing.Size(18, 13);
             this.label20.TabIndex = 26;
-            this.label20.Text = "unk2";
+            this.label20.Text = "ID";
             // 
             // txtSkill1
             // 
@@ -885,9 +893,9 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(14, 54);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(31, 13);
+            this.label21.Size = new System.Drawing.Size(55, 13);
             this.label21.TabIndex = 24;
-            this.label21.Text = "unk1";
+            this.label21.Text = "Partner ID";
             // 
             // tabPage6
             // 
@@ -931,9 +939,9 @@
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(332, 48);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(31, 13);
+            this.label32.Size = new System.Drawing.Size(54, 13);
             this.label32.TabIndex = 46;
-            this.label32.Text = "unk4";
+            this.label32.Text = "Price (TP)";
             // 
             // txtParam5
             // 
@@ -948,9 +956,9 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(14, 97);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(31, 13);
+            this.label33.Size = new System.Drawing.Size(69, 13);
             this.label33.TabIndex = 44;
-            this.label33.Text = "unk5";
+            this.label33.Text = "Parameter ID";
             // 
             // txtParam3
             // 
@@ -965,9 +973,9 @@
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(226, 48);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(31, 13);
+            this.label34.Size = new System.Drawing.Size(45, 13);
             this.label34.TabIndex = 42;
-            this.label34.Text = "unk3";
+            this.label34.Text = "Lock ID";
             // 
             // txtParam2
             // 
@@ -982,9 +990,9 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(120, 48);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(31, 13);
+            this.label35.Size = new System.Drawing.Size(18, 13);
             this.label35.TabIndex = 40;
-            this.label35.Text = "unk2";
+            this.label35.Text = "ID";
             // 
             // txtParam1
             // 
@@ -999,13 +1007,15 @@
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(14, 48);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(31, 13);
+            this.label36.Size = new System.Drawing.Size(55, 13);
             this.label36.TabIndex = 38;
-            this.label36.Text = "unk1";
+            this.label36.Text = "Partner ID";
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.cbSuperSoul);
             this.tabPage1.Controls.Add(this.txtSS4);
             this.tabPage1.Controls.Add(this.label37);
@@ -1046,9 +1056,9 @@
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(332, 49);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(31, 13);
+            this.label37.Size = new System.Drawing.Size(54, 13);
             this.label37.TabIndex = 36;
-            this.label37.Text = "unk4";
+            this.label37.Text = "Price (TP)";
             // 
             // txtSS5
             // 
@@ -1063,9 +1073,9 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(14, 98);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(31, 13);
+            this.label39.Size = new System.Drawing.Size(59, 13);
             this.label39.TabIndex = 32;
-            this.label39.Text = "unk5";
+            this.label39.Text = "Super Soul";
             // 
             // txtSS3
             // 
@@ -1080,9 +1090,9 @@
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(226, 49);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(31, 13);
+            this.label40.Size = new System.Drawing.Size(45, 13);
             this.label40.TabIndex = 30;
-            this.label40.Text = "unk3";
+            this.label40.Text = "Lock ID";
             // 
             // txtSS2
             // 
@@ -1097,9 +1107,9 @@
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(120, 49);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(31, 13);
+            this.label41.Size = new System.Drawing.Size(18, 13);
             this.label41.TabIndex = 28;
-            this.label41.Text = "unk2";
+            this.label41.Text = "ID";
             // 
             // txtSS1
             // 
@@ -1114,9 +1124,63 @@
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(14, 49);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(31, 13);
+            this.label42.Size = new System.Drawing.Size(55, 13);
             this.label42.TabIndex = 26;
-            this.label42.Text = "unk1";
+            this.label42.Text = "Partner ID";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPartnerToolStripMenuItem,
+            this.removePartnerToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.unlockAllToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // unlockAllToolStripMenuItem
+            // 
+            this.unlockAllToolStripMenuItem.Name = "unlockAllToolStripMenuItem";
+            this.unlockAllToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.unlockAllToolStripMenuItem.Text = "Unlock All";
+            // 
+            // addPartnerToolStripMenuItem
+            // 
+            this.addPartnerToolStripMenuItem.Enabled = false;
+            this.addPartnerToolStripMenuItem.Name = "addPartnerToolStripMenuItem";
+            this.addPartnerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addPartnerToolStripMenuItem.Text = "Add Partner";
+            // 
+            // removePartnerToolStripMenuItem
+            // 
+            this.removePartnerToolStripMenuItem.Enabled = false;
+            this.removePartnerToolStripMenuItem.Name = "removePartnerToolStripMenuItem";
+            this.removePartnerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.removePartnerToolStripMenuItem.Text = "Remove Partner";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(155, 6);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(171, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 23);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "Add Super Soul";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(303, 181);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 23);
+            this.button2.TabIndex = 43;
+            this.button2.Text = "Remove Super Soul";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1258,6 +1322,13 @@
         private System.Windows.Forms.ComboBox cbSkill;
         private System.Windows.Forms.ComboBox cbParam;
         private System.Windows.Forms.ComboBox cbSuperSoul;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPartnerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePartnerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem unlockAllToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
