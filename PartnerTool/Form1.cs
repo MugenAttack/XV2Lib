@@ -45,6 +45,7 @@ namespace PartnerTool
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             s.Read();
             if (Directory.Exists(s.XENOFolder + "data\\system\\chara_custom"))
             {
@@ -870,6 +871,210 @@ namespace PartnerTool
                 currentSS.unk5 = p;
                 currentPartner.talisman[cbSuperSoul.SelectedIndex] = currentSS;
                 partners[cbPartners.SelectedIndex] = currentPartner;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //add skill
+            if (cbSkill.SelectedIndex >= 0)
+            {
+                OCS_Skill n = new OCS_Skill();
+                n.unk1 = currentPartner.id;
+                n.unk3 = -1;
+                n.unk4 = 0;
+                n.unk6 = 0;
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        n.unk2 = currentPartner.type0.Count;
+                        n.unk5 = 0;
+                        currentPartner.type0.Add(n);
+                        break;
+                    case 1:
+                        n.unk2 = currentPartner.type1.Count;
+                        n.unk5 = 1;
+                        currentPartner.type1.Add(n);
+                        break;
+                    case 2:
+                        n.unk2 = currentPartner.type2.Count;
+                        n.unk5 = 2;
+                        currentPartner.type2.Add(n);
+                        break;
+                    case 3:
+                        n.unk2 = currentPartner.type3.Count;
+                        n.unk5 = 3;
+                        currentPartner.type3.Add(n);
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+                cbSkill.SelectedIndex = -1;
+                cbSkill.Items.Clear();
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        for (int i = 0; i < currentPartner.type0.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 1:
+                        for (int i = 0; i < currentPartner.type1.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 2:
+                        for (int i = 0; i < currentPartner.type2.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 3:
+                        for (int i = 0; i < currentPartner.type3.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                }
+
+                txtSkill1.Text = "";
+                txtSkill2.Text = "";
+                txtSkill3.Text = "";
+                txtSkill4.Text = "";
+                txtSkill5.Text = "";
+                txtSkill6.Text = "";
+            }
+        }
+
+        private void btnRemoveSkill_Click(object sender, EventArgs e)
+        {
+            if (cbSkill.SelectedIndex >= 0)
+            {
+               
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        currentPartner.type0.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 1:
+                        currentPartner.type1.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 2:
+                        currentPartner.type2.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                    case 3:
+                        currentPartner.type3.RemoveAt(cbSkill.SelectedIndex);
+                        break;
+                }
+
+                partners[cbPartners.SelectedIndex] = currentPartner;
+
+                cbSkill.SelectedIndex = -1;
+                cbSkill.Items.Clear();
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        for (int i = 0; i < currentPartner.type0.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 1:
+                        for (int i = 0; i < currentPartner.type1.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 2:
+                        for (int i = 0; i < currentPartner.type2.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                    case 3:
+                        for (int i = 0; i < currentPartner.type3.Count; i++)
+                            cbSkill.Items.Add(i);
+                        break;
+                }
+
+                txtSkill1.Text = "";
+                txtSkill2.Text = "";
+                txtSkill3.Text = "";
+                txtSkill4.Text = "";
+                txtSkill5.Text = "";
+                txtSkill6.Text = "";
+            }
+        }
+
+        private void btnAddParam_Click(object sender, EventArgs e)
+        {
+            if (cbParam.SelectedIndex >=0)
+            {
+                OCP_Parameters n = new OCP_Parameters();
+                n.unk1 = currentPartner.id;
+                n.unk2 = currentPartner.parameters.Count;
+                n.unk3 = -1;
+                n.unk4 = 0;
+                n.unk5 = 0;
+                currentPartner.parameters.Add(n);
+                partners[cbPartners.SelectedIndex] = currentPartner;
+                cbParam.SelectedIndex = -1;
+                cbParam.Items.Clear();
+                for (int i = 0; i < currentPartner.parameters.Count; i++)
+                    cbParam.Items.Add(i);
+                txtParam1.Text = "";
+                txtParam2.Text = "";
+                txtParam3.Text = "";
+                txtParam4.Text = "";
+                txtParam5.Text = "";
+            }
+        }
+
+        private void btnRemoveParam_Click(object sender, EventArgs e)
+        {
+            if (cbParam.SelectedIndex >= 0)
+            {
+                currentPartner.parameters.RemoveAt(cbParam.SelectedIndex);
+                partners[cbPartners.SelectedIndex] = currentPartner;
+                cbParam.SelectedIndex = -1;
+                cbParam.Items.Clear();
+                for (int i = 0; i < currentPartner.parameters.Count; i++)
+                    cbParam.Items.Add(i);
+                txtParam1.Text = "";
+                txtParam2.Text = "";
+                txtParam3.Text = "";
+                txtParam4.Text = "";
+                txtParam5.Text = "";
+            }
+        }
+
+        private void btnAddSS_Click(object sender, EventArgs e)
+        {
+            if (cbSuperSoul.SelectedIndex >= 0)
+            {
+                OCT_Talisman n = new OCT_Talisman();
+                n.unk1 = currentPartner.id;
+                n.unk2 = currentPartner.talisman.Count;
+                n.unk3 = -1;
+                n.unk4 = 0;
+                n.unk5 = 0;
+                currentPartner.talisman.Add(n);
+                partners[cbPartners.SelectedIndex] = currentPartner;
+                cbSuperSoul.SelectedIndex = -1;
+                cbSuperSoul.Items.Clear();
+                for (int i = 0; i < currentPartner.talisman.Count; i++)
+                    cbSuperSoul.Items.Add(i);
+                txtSS1.Text = "";
+                txtSS2.Text = "";
+                txtSS3.Text = "";
+                txtSS4.Text = "";
+                txtSS5.Text = "";
+            }
+        }
+
+        private void btnRemoveSS_Click(object sender, EventArgs e)
+        {
+            if (cbSuperSoul.SelectedIndex >= 0)
+            {
+                currentPartner.talisman.RemoveAt(cbSuperSoul.SelectedIndex);
+                partners[cbPartners.SelectedIndex] = currentPartner;
+                cbSuperSoul.SelectedIndex = -1;
+                cbSuperSoul.Items.Clear();
+                for (int i = 0; i < currentPartner.talisman.Count; i++)
+                    cbSuperSoul.Items.Add(i);
+                txtSS1.Text = "";
+                txtSS2.Text = "";
+                txtSS3.Text = "";
+                txtSS4.Text = "";
+                txtSS5.Text = "";
             }
         }
     }
