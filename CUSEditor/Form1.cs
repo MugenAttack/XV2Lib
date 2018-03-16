@@ -7,21 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using XV2Lib;
 namespace CUSEditor
 {
     public partial class Form1 : Form
     {
         string FileName;
-        CUSRegistry file;
+        CUSRegistry file = new CUSRegistry();
         
         bool lck = true;
         charSkillSet copySet;
         charSkillSet currentSet;
         skill copySkill;
         skill currentSkill;
-        Settings s;
-        bool infoLoaded = false;
+        Settings s = new Settings();
         
         public Form1()
         {
@@ -44,7 +44,7 @@ namespace CUSEditor
             bool infoLoaded = s.Read();
             if (infoLoaded)
             {
-                file.BuildRegistry(s.MSGFolder, s.language);
+                file.BuildRegistry(s.XENOFolder + "data\\msg\\", s.language);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace CUSEditor
             }
 
             cbChar.Items.Clear();
-            for (int i = 0; i < file.css.Length; i++)
+            for (int i = 0; i < file.css.Count; i++)
                 cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
 
         }
@@ -114,7 +114,7 @@ namespace CUSEditor
             //}
             //else
             //{
-                for (int i = 0; i < file.css.Length; i++)
+                for (int i = 0; i < file.css.Count; i++)
                     cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
             //}
             cbChar.SelectedIndex = temp;
@@ -130,37 +130,7 @@ namespace CUSEditor
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lck = false;
-            switch (cbType.SelectedIndex)
-            {
-                case 0:
-                    cbSkill.Items.Clear();
-                    for (int i = 0; i < file.Super.Count; i++)
-                        cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                    break;
-                case 1:
-                    cbSkill.Items.Clear();
-                    for (int i = 0; i < file.Ultimate.Count; i++)
-                        cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                    break;
-                case 2:
-                    cbSkill.Items.Clear();
-                    for (int i = 0; i < Evasive.Count; i++)
-                        cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                    break;
-                case 3:
-                    cbSkill.Items.Clear();
-                    for (int i = 0; i < blast.Count; i++)
-                        cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                    break;
-                case 4:
-                    cbSkill.Items.Clear();
-                    for (int i = 0; i < Awaken.Count; i++)
-                        cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                    break;
-
-            }
-            lck = true;
+            this.UpdateSkillList();
         }
 
         private void cbSkill_SelectedIndexChanged(object sender, EventArgs e)
@@ -174,13 +144,13 @@ namespace CUSEditor
                     currentSkill = file.Ultimate[cbSkill.SelectedIndex];
                     break;
                 case 2:
-                    currentSkill = Evasive[cbSkill.SelectedIndex];
+                    currentSkill = file.Evasive[cbSkill.SelectedIndex];
                     break;
                 case 3:
-                    currentSkill = blast[cbSkill.SelectedIndex];
+                    currentSkill = file.blast[cbSkill.SelectedIndex];
                     break;
                 case 4:
-                    currentSkill = Awaken[cbSkill.SelectedIndex];
+                    currentSkill = file.Awaken[cbSkill.SelectedIndex];
                     break;
             }
 
@@ -236,499 +206,386 @@ namespace CUSEditor
 
         private void txtShortName_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.shortName = txtShortName.Text;
-                UpdateCurrentSkill();
-                lck = false;
-                switch (cbType.SelectedIndex)
-                {
-                    case 0:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Super.Count; i++)
-                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                        break;
-                    case 1:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Ultimate.Count; i++)
-                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                        break;
-                    case 2:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Evasive.Count; i++)
-                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                        break;
-                    case 3:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < blast.Count; i++)
-                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                        break;
-                    case 4:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Awaken.Count; i++)
-                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                        break;
-
-                }
-                lck = true;
-            }
-
-
+            if (!this.lck)
+                return;
+            this.currentSkill.shortName = this.txtShortName.Text;
+            this.UpdateCurrentSkill();
+            this.UpdateSkillList();
+            this.lblStatus.Text = "";
         }
 
         private void txtid_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.id = short.Parse(txtid.Text);
-                UpdateCurrentSkill();
-                lck = false;
-                switch (cbType.SelectedIndex)
-                {
-                    case 0:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Super.Count; i++)
-                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                        break;
-                    case 1:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Ultimate.Count; i++)
-                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                        break;
-                    case 2:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Evasive.Count; i++)
-                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                        break;
-                    case 3:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < blast.Count; i++)
-                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                        break;
-                    case 4:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Awaken.Count; i++)
-                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                        break;
-
-                }
-                lck = true;
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txtid.Text, out result))
+                return;
+            this.currentSkill.id = result;
+            this.UpdateCurrentSkill();
+            this.UpdateSkillList();
+            this.lblStatus.Text = "";
         }
 
         private void txtid2_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.id2 = short.Parse(txtid2.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txtid2.Text, out result))
+                return;
+            this.currentSkill.id2 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //race lock
-            byte p;
-            if (lck && byte.TryParse(textBox1.Text,out p))
-            {
-                currentSkill.racelock = p;
-                UpdateCurrentSkill();
-            }
+            byte result;
+            if (!this.lck || !byte.TryParse(this.textBox1.Text, out result))
+                return;
+            this.currentSkill.racelock = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt1_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk1 = byte.Parse(txt1.Text);
-                UpdateCurrentSkill();
-            }
+            byte result;
+            if (!this.lck || !byte.TryParse(this.txtid.Text, out result))
+                return;
+            this.currentSkill.unk1 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt2_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk2 = short.Parse(txt2.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt2.Text, out result))
+                return;
+            this.currentSkill.unk2 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txtHair_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.hair = short.Parse(txtHair.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txtHair.Text, out result))
+                return;
+            this.currentSkill.hair = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt3_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk3 = short.Parse(txt3.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt3.Text, out result))
+                return;
+            this.currentSkill.unk3 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt4_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[0] = txt4.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[0] = this.txt4.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt5_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[1] = txt5.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[1] = this.txt5.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt6_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[2] = txt6.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[2] = this.txt6.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt7_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[3] = txt7.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[3] = this.txt7.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt8_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[4] = txt8.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[4] = this.txt8.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt9_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[5] = txt9.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[5] = this.txt9.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt10_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.Paths[6] = txt10.Text;
-                UpdateCurrentSkill();
-            }
+            if (!this.lck)
+                return;
+            this.currentSkill.Paths[6] = this.txt10.Text;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt11_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk4 = short.Parse(txt11.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt11.Text, out result))
+                return;
+            this.currentSkill.unk4 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt12_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk5 = short.Parse(txt12.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt12.Text, out result))
+                return;
+            this.currentSkill.unk5 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt13_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk6 = short.Parse(txt13.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt13.Text, out result))
+                return;
+            this.currentSkill.unk6 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt14_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk7 = short.Parse(txt14.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt14.Text, out result))
+                return;
+            this.currentSkill.unk7 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt15_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk8 = short.Parse(txt15.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt15.Text, out result))
+                return;
+            this.currentSkill.unk8 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt16_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk9 = short.Parse(txt16.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt16.Text, out result))
+                return;
+            this.currentSkill.unk9 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt17_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk10 = short.Parse(txt17.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt17.Text, out result))
+                return;
+            this.currentSkill.unk10 = result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void txt18_TextChanged(object sender, EventArgs e)
         {
-            if (lck)
-            {
-                currentSkill.unk11 = short.Parse(txt18.Text);
-                UpdateCurrentSkill();
-            }
+            short result;
+            if (!this.lck || !short.TryParse(this.txt18.Text, out result))
+                return;
+            this.currentSkill.unk11 = (int)result;
+            this.UpdateCurrentSkill();
+            this.lblStatus.Text = "";
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
+            if (this.tabControl1.SelectedIndex == 0)
             {
-                charSkillSet n = new charSkillSet();
-                n.skill = new short[12];
-                file.css.Add(n);
-
-                lck = false;
-                int temp = cbChar.SelectedIndex;
-                cbChar.SelectedIndex = 0;
-                cbChar.Items.Clear();
-                for (int i = 0; i < file.css.Count; i++)
-                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
-                cbChar.SelectedIndex = temp;
-                lck = true;
+                this.file.css.Add(new charSkillSet()
+                {
+                    skill = new short[10],
+                    charID = 999
+                });
+                this.lblStatus.Text = "New Skill Set Added";
+                this.lck = false;
+                this.UpdateCharlist();
+                this.lck = true;
             }
             else
             {
-                skill n = new skill();
-                n.Paths = new string[7];
-
-                switch (cbType.SelectedIndex)
+                skill skill = new skill();
+                skill.Paths = new string[7];
+                SkillReg skillReg = new SkillReg();
+                skillReg.name = "";
+                skillReg.shortName = "NEW";
+                this.lblStatus.Text = "New Skill Data Added";
+                switch (this.cbType.SelectedIndex)
                 {
                     case 0:
-                        file.Super.Add(n);
+                        this.file.Super.Add(skill);
+                        this.file.superReg.Add(skillReg);
                         break;
                     case 1:
-                        file.Ultimate.Add(n);
+                        this.file.Ultimate.Add(skill);
+                        this.file.ultimateReg.Add(skillReg);
                         break;
                     case 2:
-                        Evasive.Add(n);
+                        this.file.Evasive.Add(skill);
+                        this.file.evasiveReg.Add(skillReg);
                         break;
                     case 3:
-                        blast.Add(n);
+                        this.file.blast.Add(skill);
+                        this.file.blastReg.Add(skillReg);
                         break;
                     case 4:
-                        Awaken.Add(n);
+                        this.file.Awaken.Add(skill);
+                        this.file.awakenReg.Add(skillReg);
                         break;
                 }
-
-                lck = false;
-                cbSkill.SelectedIndex = 0;
-                switch (cbType.SelectedIndex)
-                {
-                    case 0:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Super.Count; i++)
-                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                        break;
-                    case 1:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Ultimate.Count; i++)
-                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                        break;
-                    case 2:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Evasive.Count; i++)
-                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                        break;
-                    case 3:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < blast.Count; i++)
-                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                        break;
-                    case 4:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Awaken.Count; i++)
-                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                        break;
-
-                }
-                lck = true;
-
+                this.cbSkill.SelectedIndex = 0;
+                this.UpdateSkillList();
             }
-        
         }
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
+            if(this.tabControl1.SelectedIndex == 0)
             {
-                file.css.RemoveAt(cbChar.SelectedIndex);
-                lck = false;
-                int temp = cbChar.SelectedIndex;
-                cbChar.SelectedIndex = 0;
-                cbChar.Items.Clear();
-                for (int i = 0; i < file.css.Count; i++)
-                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
-                cbChar.SelectedIndex = temp;
-                lck = true;
+                this.file.css.RemoveAt(this.cbChar.SelectedIndex);
+                this.lblStatus.Text = "Skill set has been removed";
+                this.lck = false;
+                this.UpdateCharlist();
+                this.lck = true;
             }
             else
             {
-                
-                switch (cbType.SelectedIndex)
+                switch (this.cbType.SelectedIndex)
                 {
                     case 0:
-                        file.Super.RemoveAt(cbSkill.SelectedIndex);
+                        this.file.Super.RemoveAt(this.cbSkill.SelectedIndex);
+                        this.file.superReg.RemoveAt(this.cbSkill.SelectedIndex);
                         break;
                     case 1:
-                        file.Ultimate.RemoveAt(cbSkill.SelectedIndex);
+                        this.file.Ultimate.RemoveAt(this.cbSkill.SelectedIndex);
+                        this.file.ultimateReg.RemoveAt(this.cbSkill.SelectedIndex);
                         break;
                     case 2:
-                        Evasive.RemoveAt(cbSkill.SelectedIndex);
+                        this.file.Evasive.RemoveAt(this.cbSkill.SelectedIndex);
+                        this.file.evasiveReg.RemoveAt(this.cbSkill.SelectedIndex);
                         break;
                     case 3:
-                        blast.RemoveAt(cbSkill.SelectedIndex);
+                        this.file.blast.RemoveAt(this.cbSkill.SelectedIndex);
+                        this.file.blastReg.RemoveAt(this.cbSkill.SelectedIndex);
                         break;
                     case 4:
-                        Awaken.RemoveAt(cbSkill.SelectedIndex);
+                        this.file.Awaken.RemoveAt(this.cbSkill.SelectedIndex);
+                        this.file.awakenReg.RemoveAt(this.cbSkill.SelectedIndex);
                         break;
                 }
-
-                lck = false;
-                cbSkill.SelectedIndex = 0;
-                switch (cbType.SelectedIndex)
-                {
-                    case 0:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Super.Count; i++)
-                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                        break;
-                    case 1:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Ultimate.Count; i++)
-                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                        break;
-                    case 2:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Evasive.Count; i++)
-                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                        break;
-                    case 3:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < blast.Count; i++)
-                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                        break;
-                    case 4:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Awaken.Count; i++)
-                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                        break;
-
-                }
-                lck = true;
-
+                this.lblStatus.Text = "Skill data has been removed";
+                this.cbSkill.SelectedIndex = 0;
+                this.UpdateSkillList();
             }
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
-            {
-                copySet = currentSet;
-            }
+            if (this.tabControl1.SelectedIndex == 0)
+                this.copySet = this.currentSet;
             else
-            {
-
-                copySkill = currentSkill;
-
-                
-
-            }
+                this.copySkill = this.currentSkill;
+            this.lblStatus.Text = "Data has been copied";
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)
+            if (this.tabControl1.SelectedIndex == 0)
             {
-                currentSet = copySet;
-                file.css[cbChar.SelectedIndex] = currentSet;
-
-                lck = false;
-                int temp = cbChar.SelectedIndex;
-                cbChar.SelectedIndex = 0;
-                cbChar.Items.Clear();
-                for (int i = 0; i < file.css.Count; i++)
-                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
-                cbChar.SelectedIndex = temp;
-                lck = true;
+                this.currentSet.skill = this.copySet.skill;
+                this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+                this.lck = false;
+                int selectedIndex = this.cbChar.SelectedIndex;
+                this.cbChar.SelectedIndex = 0;
+                this.cbChar.Items.Clear();
+                for (int index = 0; index < this.file.css.Count; ++index)
+                {
+                    ComboBox.ObjectCollection items = this.cbChar.Items;
+                    string str1 = "Character ";
+                    charSkillSet charSkillSet = this.file.css[index];
+                    string str2 = charSkillSet.charID.ToString("000");
+                    string str3 = " - Costume ";
+                    charSkillSet = this.file.css[index];
+                    string str4 = charSkillSet.costumeID.ToString("00");
+                    string str5 = str1 + str2 + str3 + str4;
+                    items.Add((object)str5);
+                }
+                this.cbChar.SelectedIndex = selectedIndex;
+                this.lck = true;
             }
             else
             {
-
-                currentSkill = copySkill;
-                UpdateCurrentSkill();    
-                
-
-                lck = false;
-                switch (cbType.SelectedIndex)
-                {
-                    case 0:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Super.Count; i++)
-                            cbSkill.Items.Add(file.Super[i].id.ToString("000") + " - " + file.Super[i].shortName);
-                        break;
-                    case 1:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < file.Ultimate.Count; i++)
-                            cbSkill.Items.Add(file.Ultimate[i].id.ToString("000") + " - " + file.Ultimate[i].shortName);
-                        break;
-                    case 2:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Evasive.Count; i++)
-                            cbSkill.Items.Add(Evasive[i].id.ToString("000") + " - " + Evasive[i].shortName);
-                        break;
-                    case 3:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < blast.Count; i++)
-                            cbSkill.Items.Add(blast[i].id.ToString("000") + " - " + blast[i].shortName);
-                        break;
-                    case 4:
-                        cbSkill.Items.Clear();
-                        for (int i = 0; i < Awaken.Count; i++)
-                            cbSkill.Items.Add(Awaken[i].id.ToString("000") + " - " + Awaken[i].shortName);
-                        break;
-
-                }
-                lck = true;
-
+                this.currentSkill = this.copySkill;
+                this.UpdateCurrentSkill();
+                this.UpdateSkillList();
+                this.lck = false;
+                this.txtShortName.Text = this.currentSkill.shortName;
+                this.txtid.Text = this.currentSkill.id.ToString();
+                this.txtid2.Text = this.currentSkill.id2.ToString();
+                this.textBox1.Text = this.currentSkill.racelock.ToString();
+                this.txt1.Text = this.currentSkill.unk1.ToString();
+                this.txt2.Text = this.currentSkill.unk2.ToString();
+                this.txtHair.Text = this.currentSkill.hair.ToString();
+                this.txt3.Text = this.currentSkill.unk3.ToString();
+                this.txt4.Text = this.currentSkill.Paths[0];
+                this.txt5.Text = this.currentSkill.Paths[1];
+                this.txt6.Text = this.currentSkill.Paths[2];
+                this.txt7.Text = this.currentSkill.Paths[3];
+                this.txt8.Text = this.currentSkill.Paths[4];
+                this.txt9.Text = this.currentSkill.Paths[5];
+                this.txt10.Text = this.currentSkill.Paths[6];
+                this.txt11.Text = this.currentSkill.unk4.ToString();
+                this.txt12.Text = this.currentSkill.unk5.ToString();
+                this.txt13.Text = this.currentSkill.unk6.ToString();
+                this.txt14.Text = this.currentSkill.unk7.ToString();
+                this.txt15.Text = this.currentSkill.unk8.ToString();
+                this.txt16.Text = this.currentSkill.unk9.ToString();
+                this.txt17.Text = this.currentSkill.unk10.ToString();
+                this.txt18.Text = this.currentSkill.unk11.ToString();
+                this.lck = true;
             }
+            this.lblStatus.Text = "Data has been pasted in";
         }
 
         private void label22_Click(object sender, EventArgs e)
@@ -739,6 +596,137 @@ namespace CUSEditor
         private void label34_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            //read CUS
+            s.Read();
+            
+            if (File.Exists(s.XENOFolder + "data\\system\\custom_skill.cus"))
+            {
+                file.readCUS(s.XENOFolder + "data\\system\\custom_skill.cus");
+                file.BuildRegistry(s.XENOFolder + "data\\msg", s.language);
+                cbChar.Items.Clear();
+                for (int i = 0; i < file.css.Count; i++)
+                    cbChar.Items.Add("Character " + file.css[i].charID.ToString("000") + " - Costume " + file.css[i].costumeID.ToString("00"));
+            }
+            
+            
+        }
+
+        private void UpdateSkillList()
+        {
+            this.lck = false;
+            //int selectedIndex = this.cbSkill.SelectedIndex;
+            this.cbSkill.SelectedIndex = -1;
+            switch (this.cbType.SelectedIndex)
+            {
+                case 0:
+                    this.cbSkill.Items.Clear();
+                    this.cbSkill.Items.AddRange((object[])this.file.getSkillList(0));
+                    break;
+                case 1:
+                    this.cbSkill.Items.Clear();
+                    this.cbSkill.Items.AddRange((object[])this.file.getSkillList(1));
+                    break;
+                case 2:
+                    this.cbSkill.Items.Clear();
+                    this.cbSkill.Items.AddRange((object[])this.file.getSkillList(2));
+                    break;
+                case 3:
+                    this.cbSkill.Items.Clear();
+                    this.cbSkill.Items.AddRange((object[])this.file.getSkillList(4));
+                    break;
+                case 4:
+                    this.cbSkill.Items.Clear();
+                    this.cbSkill.Items.AddRange((object[])this.file.getSkillList(5));
+                    break;
+            }
+            //this.cbSkill.SelectedIndex = selectedIndex;
+            this.lck = true;
+        }
+
+        private void cbSuper1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[0] = this.file.superReg[this.cbSuper1.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbSuper2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[1] = this.file.superReg[this.cbSuper2.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbSuper3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[2] = this.file.superReg[this.cbSuper3.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbSuper4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[3] = this.file.superReg[this.cbSuper4.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbUltimate1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[4] = this.file.ultimateReg[this.cbUltimate1.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbUltimate2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[5] = this.file.ultimateReg[this.cbUltimate2.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbEvasive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[6] = this.file.evasiveReg[this.cbEvasive.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbBlast_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[7] = this.file.blastReg[this.cbBlast.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
+        }
+
+        private void cbAwaken_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!this.lck)
+                return;
+            this.currentSet.skill[8] = this.file.awakenReg[this.cbAwaken.SelectedIndex].id;
+            this.file.css[this.cbChar.SelectedIndex] = this.currentSet;
+            this.lblStatus.Text = "";
         }
     }
 }

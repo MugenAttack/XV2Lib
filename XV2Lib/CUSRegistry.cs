@@ -7,7 +7,7 @@ using System.IO;
 
 namespace XV2Lib
 {
-    struct SkillReg
+    public struct SkillReg
     {
         public short id;
         public string shortName;
@@ -16,159 +16,307 @@ namespace XV2Lib
 
     public class CUSRegistry
     {
-
-        public charSkillSet[] css = new charSkillSet[1];
-        public skill[] Super = new skill[1];
-        public skill[] Ultimate = new skill[1];
-        public skill[] Evasive = new skill[1];
-        public skill[] blast = new skill[1];
-        public skill[] Awaken = new skill[1];
-
-        SkillReg[] superReg = new SkillReg[1]; 
-        SkillReg[] ultimateReg = new SkillReg[1];
-        SkillReg[] evasiveReg = new SkillReg[1];
-        SkillReg[] blastReg = new SkillReg[1];
-        SkillReg[] awakenReg = new SkillReg[1];
+        public List<charSkillSet> css = new List<charSkillSet>();
+        public List<skill> Super = new List<skill>();
+        public List<skill> Ultimate = new List<skill>();
+        public List<skill> Evasive = new List<skill>();
+        public List<skill> blast = new List<skill>();
+        public List<skill> Awaken = new List<skill>();
+        public List<SkillReg> superReg = new List<SkillReg>();
+        public List<SkillReg> ultimateReg = new List<SkillReg>();
+        public List<SkillReg> evasiveReg = new List<SkillReg>();
+        public List<SkillReg> blastReg = new List<SkillReg>();
+        public List<SkillReg> awakenReg = new List<SkillReg>();
 
         public void readCUS(string cusPath)
         {
+            charSkillSet[] css = new charSkillSet[1];
+            skill[] Super = new skill[1];
+            skill[] Ultimate = new skill[1];
+            skill[] Evasive = new skill[1];
+            skill[] blast = new skill[1];
+            skill[] Awaken = new skill[1];
             CUS.Read(cusPath, ref css, ref Super, ref Ultimate, ref Evasive, ref Awaken, ref blast);
+            this.css.AddRange((IEnumerable<charSkillSet>)css);
+            this.Super.AddRange((IEnumerable<skill>)Super);
+            this.Ultimate.AddRange((IEnumerable<skill>)Ultimate);
+            this.Evasive.AddRange((IEnumerable<skill>)Evasive);
+            this.blast.AddRange((IEnumerable<skill>)blast);
+            this.Awaken.AddRange((IEnumerable<skill>)Awaken);
         }
 
-        public void BuildRegistry(string Msgfolder,string lang)
+        public void BuildRegistry(string Msgfolder, string lang)
         {
             if (Directory.Exists(Msgfolder))
             {
-                MSG m = MSGStream.Read(Msgfolder + "/proper_noun_skill_spa_name_" + lang + ".msg");
-                superReg = new SkillReg[Super.Length];
-                for(int i = 0; i < Super.Length; i++)
+                MSG msg1 = MSGStream.Read(Msgfolder + "\\proper_noun_skill_spa_name_" + lang + ".msg");
+                this.superReg.Clear();
+                SkillReg skillReg;
+                skill skill;
+                for (int index = 0; index < this.Super.Count; ++index)
                 {
-                    superReg[i].id = Super[i].id;
-                    superReg[i].shortName = Super[i].shortName;
-                    superReg[i].name = m.Find("spe_skill_" + Super[i].id2.ToString("0000"));
+                    skillReg.id = this.Super[index].id;
+                    skillReg.shortName = this.Super[index].shortName;
+                    string str1 = "spe_skill_";
+                    skill = this.Super[index];
+                    string str2 = skill.id2.ToString("0000");
+                    string id = str1 + str2;
+                    string str3 = msg1.Find(id);
+                    skillReg.name = str3;
+                    this.superReg.Add(skillReg);
                 }
-
-                m = MSGStream.Read(Msgfolder + "/proper_noun_skill_ult_name_" + lang + ".msg");
-                ultimateReg = new SkillReg[Ultimate.Length];
-                for (int i = 0; i < Ultimate.Length; i++)
+                MSG msg2 = MSGStream.Read(Msgfolder + "\\proper_noun_skill_ult_name_" + lang + ".msg");
+                this.ultimateReg.Clear();
+                for (int index = 0; index < this.Ultimate.Count; ++index)
                 {
-                    ultimateReg[i].id = Ultimate[i].id;
-                    ultimateReg[i].shortName = Ultimate[i].shortName;
-                    ultimateReg[i].name = m.Find("ult_skill_" + Ultimate[i].id2.ToString("0000"));
+                    skillReg.id = this.Ultimate[index].id;
+                    skillReg.shortName = this.Ultimate[index].shortName;
+                    string str1 = "ult_";
+                    skill = this.Ultimate[index];
+                    string str2 = skill.id2.ToString("0000");
+                    string id = str1 + str2;
+                    string str3 = msg2.Find(id);
+                    skillReg.name = str3;
+                    this.ultimateReg.Add(skillReg);
                 }
-
-                m = MSGStream.Read(Msgfolder + "/proper_noun_skill_esc_name_" + lang + ".msg");
-                evasiveReg = new SkillReg[Evasive.Length];
-                for (int i = 0; i < Evasive.Length; i++)
+                MSG msg3 = MSGStream.Read(Msgfolder + "\\proper_noun_skill_esc_name_" + lang + ".msg");
+                this.evasiveReg.Clear();
+                for (int index = 0; index < this.Evasive.Count; ++index)
                 {
-                    evasiveReg[i].id = Evasive[i].id;
-                    evasiveReg[i].shortName = Evasive[i].shortName;
-                    evasiveReg[i].name = m.Find("avoid_skill_" + Evasive[i].id2.ToString("0000"));
+                    skillReg.id = this.Evasive[index].id;
+                    skillReg.shortName = this.Evasive[index].shortName;
+                    string str1 = "avoid_skill_";
+                    skill = this.Evasive[index];
+                    string str2 = skill.id2.ToString("0000");
+                    string id = str1 + str2;
+                    string str3 = msg2.Find(id);
+                    skillReg.name = str3;
+                    this.evasiveReg.Add(skillReg);
                 }
-
-             
-                blastReg = new SkillReg[blast.Length];
-                for (int i = 0; i < blast.Length; i++)
+                this.blastReg.Clear();
+                for (int index = 0; index < this.blast.Count; ++index)
                 {
-                    blastReg[i].id = blast[i].id;
-                    blastReg[i].shortName = blast[i].shortName;
-                    blastReg[i].name = "";
+                    skillReg.id = this.blast[index].id;
+                    skillReg.shortName = this.blast[index].shortName;
+                    skillReg.name = "";
+                    this.blastReg.Add(skillReg);
                 }
-
-                m = MSGStream.Read(Msgfolder + "/proper_noun_skill_met_name_" + lang + ".msg");
-                awakenReg = new SkillReg[Awaken.Length];
-                for (int i = 0; i < Awaken.Length; i++)
+                MSG msg4 = MSGStream.Read(Msgfolder + "\\proper_noun_skill_met_name_" + lang + ".msg");
+                this.awakenReg.Clear();
+                for (int index = 0; index < this.Awaken.Count; ++index)
                 {
-                    awakenReg[i].id = Awaken[i].id;
-                    awakenReg[i].shortName = Awaken[i].shortName;
-                    awakenReg[i].name = m.Find("met_skill_" + Awaken[i].id2.ToString("0000"));
+                    skillReg.id = this.Awaken[index].id;
+                    skillReg.shortName = this.Awaken[index].shortName;
+                    string str1 = "met_skill_";
+                    skill = this.Awaken[index];
+                    string str2 = skill.id2.ToString("0000");
+                    string id = str1 + str2;
+                    string str3 = msg4.Find(id);
+                    skillReg.name = str3;
+                    this.awakenReg.Add(skillReg);
                 }
             }
             else
             {
-                superReg = new SkillReg[Super.Length];
-                for (int i = 0; i < Super.Length; i++)
+                this.superReg.Clear();
+                SkillReg skillReg;
+                for (int index = 0; index < this.Super.Count; ++index)
                 {
-                    superReg[i].id = Super[i].id;
-                    superReg[i].shortName = Super[i].shortName;
-                    superReg[i].name = "";
+                    skillReg.id = this.Super[index].id;
+                    skillReg.shortName = this.Super[index].shortName;
+                    skillReg.name = "";
+                    this.superReg.Add(skillReg);
                 }
-
-                ultimateReg = new SkillReg[Ultimate.Length];
-                for (int i = 0; i < Ultimate.Length; i++)
+                this.ultimateReg.Clear();
+                for (int index = 0; index < this.Ultimate.Count; ++index)
                 {
-                    ultimateReg[i].id = Ultimate[i].id;
-                    ultimateReg[i].shortName = Ultimate[i].shortName;
-                    ultimateReg[i].name = "";
+                    skillReg.id = this.Ultimate[index].id;
+                    skillReg.shortName = this.Ultimate[index].shortName;
+                    skillReg.name = "";
+                    this.ultimateReg.Add(skillReg);
                 }
-
-               
-                evasiveReg = new SkillReg[Evasive.Length];
-                for (int i = 0; i < Evasive.Length; i++)
+                this.evasiveReg.Clear();
+                for (int index = 0; index < this.Evasive.Count; ++index)
                 {
-                    evasiveReg[i].id = Evasive[i].id;
-                    evasiveReg[i].shortName = Evasive[i].shortName;
-                    evasiveReg[i].name = "";
+                    skillReg.id = this.Evasive[index].id;
+                    skillReg.shortName = this.Evasive[index].shortName;
+                    skillReg.name = "";
+                    this.evasiveReg.Add(skillReg);
                 }
-
-                blastReg = new SkillReg[blast.Length];
-                for (int i = 0; i < blast.Length; i++)
+                this.blastReg.Clear();
+                for (int index = 0; index < this.blast.Count; ++index)
                 {
-                    blastReg[i].id = blast[i].id;
-                    blastReg[i].shortName = blast[i].shortName;
-                    blastReg[i].name = "";
+                    skillReg.id = this.blast[index].id;
+                    skillReg.shortName = this.blast[index].shortName;
+                    skillReg.name = "";
+                    this.blastReg.Add(skillReg);
                 }
-
-                awakenReg = new SkillReg[Awaken.Length];
-                for (int i = 0; i < Awaken.Length; i++)
+                this.awakenReg.Clear();
+                for (int index = 0; index < this.Awaken.Count; ++index)
                 {
-                    awakenReg[i].id = Awaken[i].id;
-                    awakenReg[i].shortName = Awaken[i].shortName;
-                    awakenReg[i].name = "";
+                    skillReg.id = this.Awaken[index].id;
+                    skillReg.shortName = this.Awaken[index].shortName;
+                    skillReg.name = "";
+                    this.awakenReg.Add(skillReg);
                 }
             }
         }
 
         public void writeCUS(string cusPath)
         {
-            CUS.Write(cusPath, ref css, ref Super, ref Ultimate, ref Evasive, ref Awaken, ref blast);
+            charSkillSet[] charSkillSetArray = new charSkillSet[1];
+            skill[] skillArray1 = new skill[1];
+            skill[] skillArray2 = new skill[1];
+            skill[] skillArray3 = new skill[1];
+            skill[] skillArray4 = new skill[1];
+            skill[] skillArray5 = new skill[1];
+            charSkillSet[] array1 = this.css.ToArray();
+            skill[] array2 = this.Super.ToArray();
+            skill[] array3 = this.Ultimate.ToArray();
+            skill[] array4 = this.Evasive.ToArray();
+            skill[] array5 = this.blast.ToArray();
+            skill[] array6 = this.Awaken.ToArray();
+            CUS.Write(cusPath, ref array1, ref array2, ref array3, ref array4, ref array6, ref array5);
         }
 
-        public string FindSkillName(int type, short id)
+        public int FindSkillIndex(int type, short id)
         {
-            
-            switch(type)
+            switch (type)
             {
                 case 0:
-                    for(int i = 0; i < superReg.Length; i++)
+                    for (int index = 0; index < this.superReg.Count; ++index)
                     {
-                        if (superReg[i].id == id)
-                            return superReg[i].name;
+                        if ((int)this.superReg[index].id == (int)id)
+                            return index;
                     }
                     break;
                 case 1:
-                    for (int i = 0; i < ultimateReg.Length; i++)
+                    for (int index = 0; index < this.ultimateReg.Count; ++index)
                     {
-                        if (ultimateReg[i].id == id)
-                            return ultimateReg[i].name;
+                        if ((int)this.ultimateReg[index].id == (int)id)
+                            return index;
                     }
                     break;
                 case 2:
-                    break;
-                case 3:
+                    for (int index = 0; index < this.evasiveReg.Count; ++index)
+                    {
+                        if ((int)this.evasiveReg[index].id == (int)id)
+                            return index;
+                    }
                     break;
                 case 4:
+                    for (int index = 0; index < this.blastReg.Count; ++index)
+                    {
+                        if ((int)this.blastReg[index].id == (int)id)
+                            return index;
+                    }
                     break;
                 case 5:
+                    for (int index = 0; index < this.awakenReg.Count; ++index)
+                    {
+                        if ((int)this.awakenReg[index].id == (int)id)
+                            return index;
+                    }
                     break;
             }
-
-            return "";
+            return -1;
         }
 
         public string[] getSkillList(int type)
         {
-            return null;
+            List<string> stringList = new List<string>();
+            switch (type)
+            {
+                case 0:
+                    for (int index = 0; index < this.superReg.Count; ++index)
+                    {
+                        if (this.superReg[index].name != "")
+                            stringList.Add(this.superReg[index].name);
+                        else
+                            stringList.Add(this.superReg[index].shortName);
+                    }
+                    break;
+                case 1:
+                    for (int index = 0; index < this.ultimateReg.Count; ++index)
+                    {
+                        if (this.ultimateReg[index].name != "")
+                            stringList.Add(this.ultimateReg[index].name);
+                        else
+                            stringList.Add(this.ultimateReg[index].shortName);
+                    }
+                    break;
+                case 2:
+                    for (int index = 0; index < this.evasiveReg.Count; ++index)
+                    {
+                        if (this.evasiveReg[index].name != "")
+                            stringList.Add(this.evasiveReg[index].name);
+                        else
+                            stringList.Add(this.evasiveReg[index].shortName);
+                    }
+                    break;
+                case 4:
+                    for (int index = 0; index < this.blastReg.Count; ++index)
+                    {
+                        if (this.blastReg[index].name != "")
+                            stringList.Add(this.blastReg[index].name);
+                        else
+                            stringList.Add(this.blastReg[index].shortName);
+                    }
+                    break;
+                case 5:
+                    for (int index = 0; index < this.awakenReg.Count; ++index)
+                    {
+                        if (this.awakenReg[index].name != "")
+                            stringList.Add(this.awakenReg[index].name);
+                        else
+                            stringList.Add(this.awakenReg[index].shortName);
+                    }
+                    break;
+            }
+            return stringList.ToArray();
+        }
+
+        public bool Skillid2Used(int type, int id)
+        {
+            switch (type)
+            {
+                case 0:
+                    for (int index = 0; index < this.Super.Count; ++index)
+                    {
+                        if ((int)this.Super[index].id2 == id)
+                            return true;
+                    }
+                    break;
+                case 1:
+                    for (int index = 0; index < this.Ultimate.Count; ++index)
+                    {
+                        if ((int)this.Ultimate[index].id2 == id)
+                            return true;
+                    }
+                    break;
+                case 2:
+                    for (int index = 0; index < this.Evasive.Count; ++index)
+                    {
+                        if ((int)this.Evasive[index].id2 == id)
+                            return true;
+                    }
+                    break;
+                case 4:
+                    for (int index = 0; index < this.blast.Count; ++index)
+                    {
+                        if ((int)this.blast[index].id2 == id)
+                            return true;
+                    }
+                    break;
+                case 5:
+                    for (int index = 0; index < this.Awaken.Count; ++index)
+                    {
+                        if ((int)this.Awaken[index].id2 == id)
+                            return true;
+                    }
+                    break;
+            }
+            return false;
         }
     }
 }
