@@ -39,6 +39,7 @@ namespace MSGEditor
                 cbList.Items.Add(file.data[i].ID.ToString() + " - " + file.data[i].NameID);
 
             Addfile(FileName);
+            lblStatus.Text = "MSG Variation: " + file.type.ToString();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -272,6 +273,12 @@ namespace MSGEditor
         {
             Search ns = new Search(this);
             ns.Show();
+        }
+
+        private void convertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            convert ct = new convert();
+            ct.Show();
         }
     }
 }

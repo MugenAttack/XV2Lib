@@ -63,6 +63,8 @@ namespace XV2Lib
                     br.BaseStream.Seek(textaddress, SeekOrigin.Begin);
                     if (file.type == 256)
                         file.data[i].NameID = Encoding.Unicode.GetString(br.ReadBytes(charCount - 2));
+                    else if (file.type == 512)
+                        file.data[i].NameID = Encoding.UTF32.GetString(br.ReadBytes(charCount - 4));
                     else
                         file.data[i].NameID = Encoding.ASCII.GetString(br.ReadBytes(charCount - 1));
                 }
@@ -93,7 +95,10 @@ namespace XV2Lib
                         br.BaseStream.Seek(4, SeekOrigin.Current);
                         int charCount = br.ReadInt32();
                         br.BaseStream.Seek(address2, SeekOrigin.Begin);
-                        file.data[i].Lines[j] = Encoding.Unicode.GetString(br.ReadBytes(charCount - 2));
+                        if (file.type == 512)
+                            file.data[i].Lines[j] = Encoding.UTF32.GetString(br.ReadBytes(charCount - 4));
+                        else
+                            file.data[i].Lines[j] = Encoding.Unicode.GetString(br.ReadBytes(charCount - 2));
                     }
                 }
 
@@ -143,7 +148,9 @@ namespace XV2Lib
             //MessageBox.Show("setup");
             //generate top
             fileData1[0] = 0x23; fileData1[1] = 0x4D; fileData1[2] = 0x53; fileData1[3] = 0x47;
-            if (file.type == 256)
+            if (file.type == 512)
+            { fileData1[4] = 0x00; fileData1[5] = 0x02; fileData1[6] = 0x02; fileData1[7] = 0x00; }
+            else if (file.type == 256)
             { fileData1[4] = 0x00; fileData1[5] = 0x01; fileData1[6] = 0x01; fileData1[7] = 0x00; }
             else
             { fileData1[4] = 0x00; fileData1[5] = 0x00; fileData1[6] = 0x01; fileData1[7] = 0x00; }
@@ -166,7 +173,7 @@ namespace XV2Lib
             for (int i = 0; i < file.data.Length; i++)
             {
                 Applybyte(ref fileData1,
-                          GenWordsBytes(file.data[i].NameID, file.type == 256, ref fileDataText, LastStart),
+                          GenWordsBytes(file.data[i].NameID, file.type, ref fileDataText, LastStart),
                           Mid1Start + (i * 16),
                           16);
             }
@@ -185,8 +192,15 @@ namespace XV2Lib
                 address3 = Mid4Start + (ListCount * 16);
                 for (int j = 0; j < file.data[i].Lines.Length; j++)
                 {
+                    int t;
+                    if (file.type != 512)
+                        t = 256;
+                    else
+                        t = 512;
+                            
+
                     Applybyte(ref fileData1,
-                          GenWordsBytes(file.data[i].Lines[j], true, ref fileDataText, LastStart),
+                          GenWordsBytes(file.data[i].Lines[j], t , ref fileDataText, LastStart),
                           Mid4Start + (ListCount * 16),
                           16);
                     ListCount++;
@@ -211,11 +225,17 @@ namespace XV2Lib
                 file[pos + i] = data[i];
         }
 
-        public static byte[] GenWordsBytes(string Line, bool type256, ref List<byte> text, int bCount)
+        public static byte[] GenWordsBytes(string Line, int type, ref List<byte> text, int bCount)
         {
 
             byte[] charArray;
-            if (type256)
+            if (type == 512)
+            {
+                charArray = new byte[(Line.Length + 1) * 4];
+                charArray = Encoding.UTF32.GetBytes(Line + "\0");
+
+            }
+            else if (type == 256)
             {
                 charArray = new byte[(Line.Length + 1) * 2];
                 charArray = Encoding.Unicode.GetBytes(Line + "\0");
