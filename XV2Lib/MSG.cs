@@ -40,6 +40,8 @@ namespace XV2Lib
             public string[] Lines;
         }
 
+
+    //msg stream loads msg data
     public static class MSGStream
     {
         public static MSG Read(string FilePath)
