@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XV2Lib;
+using Imaging.DDSReader;
 
 namespace SelectScreenEditor
 {
@@ -15,6 +17,11 @@ namespace SelectScreenEditor
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

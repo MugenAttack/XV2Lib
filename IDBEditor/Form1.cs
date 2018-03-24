@@ -52,5 +52,10 @@ namespace IDBEditor
         {
 
         }
+
+        private void lstData_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -37,9 +37,15 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.raceLockEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.superSoulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.costumeSetEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbList = new System.Windows.Forms.ComboBox();
             this.cbEffect = new System.Windows.Forms.ComboBox();
             this.lstData = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,12 +74,6 @@
             this.txtExtra = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtVal = new System.Windows.Forms.TextBox();
-            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.superSoulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.costumeSetEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.raceLockEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,14 +101,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // editToolStripMenuItem
@@ -125,26 +125,54 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
+            // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.raceLockEditorToolStripMenuItem,
+            this.superSoulToolStripMenuItem,
+            this.costumeSetEditorToolStripMenuItem});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.modeToolStripMenuItem.Text = "Tools";
+            // 
+            // raceLockEditorToolStripMenuItem
+            // 
+            this.raceLockEditorToolStripMenuItem.Name = "raceLockEditorToolStripMenuItem";
+            this.raceLockEditorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.raceLockEditorToolStripMenuItem.Text = "Race Lock Editor";
+            // 
+            // superSoulToolStripMenuItem
+            // 
+            this.superSoulToolStripMenuItem.Name = "superSoulToolStripMenuItem";
+            this.superSoulToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.superSoulToolStripMenuItem.Text = "Super Soul Editor";
+            // 
+            // costumeSetEditorToolStripMenuItem
+            // 
+            this.costumeSetEditorToolStripMenuItem.Name = "costumeSetEditorToolStripMenuItem";
+            this.costumeSetEditorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.costumeSetEditorToolStripMenuItem.Text = "Costume Set Editor";
             // 
             // cbList
             // 
@@ -178,6 +206,7 @@
             this.lstData.TabIndex = 3;
             this.lstData.UseCompatibleStateImageBehavior = false;
             this.lstData.View = System.Windows.Forms.View.Tile;
+            this.lstData.SelectedIndexChanged += new System.EventHandler(this.lstData_SelectedIndexChanged);
             // 
             // txtID
             // 
@@ -401,34 +430,6 @@
             this.txtVal.Name = "txtVal";
             this.txtVal.Size = new System.Drawing.Size(171, 20);
             this.txtVal.TabIndex = 31;
-            // 
-            // modeToolStripMenuItem
-            // 
-            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.raceLockEditorToolStripMenuItem,
-            this.superSoulToolStripMenuItem,
-            this.costumeSetEditorToolStripMenuItem});
-            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.modeToolStripMenuItem.Text = "Tools";
-            // 
-            // superSoulToolStripMenuItem
-            // 
-            this.superSoulToolStripMenuItem.Name = "superSoulToolStripMenuItem";
-            this.superSoulToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.superSoulToolStripMenuItem.Text = "Super Soul Editor";
-            // 
-            // costumeSetEditorToolStripMenuItem
-            // 
-            this.costumeSetEditorToolStripMenuItem.Name = "costumeSetEditorToolStripMenuItem";
-            this.costumeSetEditorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.costumeSetEditorToolStripMenuItem.Text = "Costume Set Editor";
-            // 
-            // raceLockEditorToolStripMenuItem
-            // 
-            this.raceLockEditorToolStripMenuItem.Name = "raceLockEditorToolStripMenuItem";
-            this.raceLockEditorToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.raceLockEditorToolStripMenuItem.Text = "Race Lock Editor";
             // 
             // Form1
             // 

@@ -96,11 +96,11 @@ namespace XV2ListGeneratorCSV
             idb = new IDB();
             idb.Read(s.XENOFolder + "data/system/item/costume_top_item.idb");
             sw = new StreamWriter("Costume_" + s.language + ".csv");
-            sw.WriteLine("ID (Numeric)" + sep + "ID (HEX)" + sep + "Name");
+            sw.WriteLine("ID (Numeric)" + sep + "ID (HEX)" + sep + "Model ID (Numeric)" + sep + "Model ID (Hex)" + sep + "Name");
             foreach (IDB_Data i in idb.items)
             {
                 string txt = m.Find(i.name);
-                sw.WriteLine(i.id.ToString() + sep + ReverseHexString4(i.id.ToString("x4")) + sep + txt);
+                sw.WriteLine(i.id.ToString() + sep + ReverseHexString4(i.id.ToString("x4")) + sep + i.extra.ToString() + sep + ReverseHexString4(i.extra.ToString("x4")) + sep + txt);
             }
             sw.Close();
 
@@ -108,11 +108,11 @@ namespace XV2ListGeneratorCSV
             idb = new IDB();
             idb.Read(s.XENOFolder + "data/system/item/accessory_item.idb");
             sw = new StreamWriter("Accessory_" + s.language + ".csv");
-            sw.WriteLine("ID (Numeric)" + sep + "ID (HEX)" + sep + "Name");
+            sw.WriteLine("ID (Numeric)" + sep + "ID (HEX)" + sep + "Model ID (Numeric)" + sep + "Model ID (Hex)" + sep + "Name");
             foreach (IDB_Data i in idb.items)
             {
                 string txt = m.Find(i.name);
-                sw.WriteLine(i.id.ToString() + sep + ReverseHexString4(i.id.ToString("x4")) + sep + txt);
+                sw.WriteLine(i.id.ToString() + sep + ReverseHexString4(i.id.ToString("x4")) + sep + i.extra.ToString() + sep + ReverseHexString4(i.extra.ToString("x4")) + sep + txt);
             }
             sw.Close();
         }
